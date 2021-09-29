@@ -1,7 +1,7 @@
 * [免责声明](/)
-* 查漏补缺
+* [查漏补缺]
    * [面经查漏补缺](/查漏补缺/面经查漏补缺.md)
-* Java
+* [Java]
      * [JAD反编译](/java/JAD反编译tricks.md)
      * [JAVA核心技术36讲](/java/JAVA核心技术36讲.md)
      * [ArrayList源码+扩容机制分析](/java/ArrayList源码+扩容机制分析.md)
@@ -59,24 +59,24 @@
      * [面试官爱问的equals与hashCode  ](/java/面试官爱问的equals与hashCode%20%20.md)
      * [手把手教你定位常见Java性能问题](/java/手把手教你定位常见Java性能问题.md)
      * [拿来即用的线程池最佳实践](/java/拿来即用的线程池最佳实践.md)
-* 服务器
-  * nginx
-* 消息队列
+* [服务器]
+  * [nginx]
+* [消息队列]
   * [消息队列概论](/架构/message-queue.md) 
-  * rabbitmq
+  * [rabbitmq]
      * [RabbitMQ入门看这一篇就够了](/rabbitmq/RabbitMQ入门看这一篇就够了.md)
-  * kafka
+  * [kafka]
      * [Kafka 概述：深入理解架构](/kafka/Kafka%20概述：深入理解架构.md)
      * [Kafka常见面试题总结](/kafka/Kafka常见面试题总结.md)
-  * rocketmq
+  * [rocketmq]
      * [RocketMQ-Questions](/rocketmq/RocketMQ-Questions.md)
      * [RocketMQ](/rocketmq/RocketMQ.md)
-* 数据存储
-  * mybatis
+* [数据存储]
+  * [mybatis]
      * [mybatis-interview](/mybatis/mybatis-interview.md)
-  * sharding-jdbc
+  * [sharding-jdbc]
      * [SpringBoot2集成Sharding-JDBC实现分库分表](/spring/SpringBoot2集成Sharding-JDBC实现分库分表.md)   
-  * mysql
+  * [mysql]
      * [InnoDB对MVCC的实现](/mysql/InnoDB对MVCC的实现.md)
      * [InnoDB中的页合并与分裂](/mysql/InnoDB中的页合并与分裂.md)
      * [MySQL Index](/mysql/MySQL%20Index.md)
@@ -99,7 +99,7 @@
      * [一张图彻底搞懂MySQL 的锁机制](/mysql/一张图彻底搞懂MySQL%20的锁机制.md)
      * [关于数据库存储时间的一点思考](/mysql/关于数据库存储时间的一点思考.md)
      * [阿里巴巴开发手册数据库部分的一些最佳实践](/mysql/阿里巴巴开发手册数据库部分的一些最佳实践.md)
-  * redis
+  * [redis]
       * [3种常用的缓存读写策略](/redis/3种常用的缓存读写策略.md)
       * [Redis01](/redis/Redis01.md)
       * [Redis02](/redis/Redis02.md)
@@ -111,10 +111,10 @@
       * [redis面试](/redis/redis面试.md)
       * [redis集群以及应用场景](/redis/redis集群以及应用场景.md)
       * [如何做可靠的分布式锁，Redlock真的可行么](/redis/如何做可靠的分布式锁，Redlock真的可行么.md)
-  * elasticsearch
+  * [elasticsearch]
       * [51道Elasticsearch面试题](/elasticsearch/51道Elasticsearch面试题.md)
-* 架构设计
-  * spring
+* [架构设计]
+  * [spring]
      * [Spring-Design-Patterns](/spring/Spring-Design-Patterns.md)
      * [Spring](/spring/Spring.md)
      * [SpringBean生命周期](/spring/SpringBean生命周期.md)
@@ -126,7 +126,7 @@
      * [Spring解决循环依赖](/spring/Spring解决循环依赖.md)
      * [aop](/spring/aop.md)
      * [idea调试Spring源码](/spring/idea调试Spring源码.md)
-  * 技术问题
+  * [技术问题]
      * [8 张图读懂大型网站技术架构](/架构/8%20张图读懂大型网站技术架构.md)
      * [JWT优缺点分析以及常见问题解决方案](/架构/JWT优缺点分析以及常见问题解决方案.md)
      * [RESTfulAPI简明教程](/架构/RESTfulAPI简明教程.md)
@@ -149,50 +149,50 @@
      * [为什么要网站有哪些常见的网站系统](/架构/为什么要网站有哪些常见的网站系统.md)
      * [关于大型网站系统架构你不得不懂的10个问题](/架构/关于大型网站系统架构你不得不懂的10个问题.md)
      * [如何设计一个高可用系统要考虑哪些地方](/架构/如何设计一个高可用系统要考虑哪些地方.md)
-* 计算机基础
-  * 网络
+* [计算机基础]
+  * [网络]
        * [HTTPS中的TLS](/网络/HTTPS中的TLS.md)
        * [计算机网络](/网络/计算机网络.md)
        * [计算机网络知识总结](/网络/计算机网络知识总结.md)
-  * 操作系统
+  * [操作系统]
        * [Shell](/操作系统/Shell.md)
        * [basis](/操作系统/basis.md)
        * [linux](/操作系统/linux.md)
-  * 数据结构
+  * [数据结构]
        * [B+树与LSM树](/数据结构/B+树与LSM树.md)
        * [LRU与LFU](/数据结构/LRU与LFU.md)
        * [数据结构与算法](/数据结构/数据结构与算法.md)
-* 设计模式
+* [设计模式]
   * [设计模式](/设计模式/设计模式.md)
-* 容器
-  * 云原生
+* [容器]
+  * [云原生]
     * [云原生简介](/架构/云原生.md)
-  * docker
+  * [docker]
       * [docker笔记](/docker/docker笔记.md)
-* 分布式
+* [分布式]
   * [CAP理论](/架构/CAP理论.md)
   * [BASE理论](/架构/BASE理论.md)
   * [分布式id生成方案总结](/架构/分布式id生成方案总结.md)
   * [分布式锁](/架构/分布式锁.md)
   * [分布式事务](/架构/事务.md)
-* 微服务
-  * springcloud
+* [微服务]
+  * [springcloud]
      * [spring-cloud](/架构/spring-cloud.md)
      * [SpringClodAlibaba](/spring/SpringClodAlibaba.md)
      * [Springcloud服务链路追踪](/spring/Springcloud服务链路追踪.md)
-  * zookeeper
+  * [zookeeper]
      * [Zookeeper](/zookeeper/Zookeeper.md)
      * [Zookeeper lock](/zookeeper/Zookeeper_lock.md)
      * [Zookeeper面试专题](/zookeeper/Zookeeper面试专题.md)
      * [zookeeper-in-action](/zookeeper/zookeeper-in-action.md)
      * [zookeeper-intro](/zookeeper/zookeeper-intro.md)
      * [zookeeper-plus](/zookeeper/zookeeper-plus.md)
-  * eureka
+  * [eureka]
       * [eureka注册中心访问权限](/eureka/eureka注册中心访问权限.md)
       * [eureka高可用的服务注册中心(Finchley版本)](/eureka/eureka高可用的服务注册中心(Finchley版本).md)
-  * dubbo
+  * [dubbo]
     * [Dubbo](/dubbo/Dubbo.md)
     * [Dubbo面试题](/dubbo/Dubbo面试题.md)
     * [Spring集成dubbo集群实现服务降级](/spring/Spring集成dubbo集群实现服务降级.md)
-  * consul
+  * [consul]
       * [Consul实现服务注册中心](/consul/Consul实现服务注册中心.md)
