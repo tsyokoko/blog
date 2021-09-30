@@ -33,7 +33,6 @@ Kafka 本质上是一个 MQ（Message Queue），使用消息队列的好处？ 
 
 ![img](/Users/mbpzy/images/16fb2cd4f1223ab9~tplv-t2oaga2asx-watermark.awebp)
 
-
 Kafka 存储的消息来自任意多被称为 Producer 生产者的进程。数据从而可以被发布到不同的 Topic 主题下的不同 Partition 分区。在一个分区内，这些消息被索引并连同时间戳存储在一起。其它被称为 Consumer 消费者的进程可以从分区订阅消息。Kafka 运行在一个由一台或多台服务器组成的集群上，并且分区可以跨集群结点分布。
 下面给出 Kafka 一些重要概念，让大家对 Kafka 有个整体的认识和感知，后面还会详细的解析每一个概念的作用以及更深入的原理。
 

@@ -50,7 +50,7 @@ Kafka 主要有两大应用场景：
 
 发布-订阅模型主要是为了解决队列模型存在的问题。
 
-![发布订阅模型](https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/java-guide-blog/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B.png)
+![发布订阅模型](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B.png)
 
 发布订阅模型（Pub-Sub） 使用**主题（Topic）** 作为消息通信载体，类似于**广播模式**；发布者发布一条消息，该消息通过主题传递给所有的订阅者，**在一条消息广播之后才订阅的用户则是收不到该条消息的**。
 
@@ -64,7 +64,7 @@ Kafka 主要有两大应用场景：
 
 Kafka 将生产者发布的消息发送到 **Topic（主题）** 中，需要这些消息的消费者可以订阅这些 **Topic（主题）**，如下图所示：
 
-![Kafka Topic Partition](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/KafkaTopicPartitioning.png)
+![Kafka Topic Partition](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/KafkaTopicPartitioning.png)
 
 上面这张图也为我们引出了，Kafka 比较重要的几个概念：
 
@@ -98,7 +98,7 @@ Kafka 将生产者发布的消息发送到 **Topic（主题）** 中，需要这
 
 下图就是我的本地 Zookeeper ，它成功和我本地的 Kafka 关联上（以下文件夹结构借助 idea 插件 Zookeeper tool 实现）。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/zookeeper-kafka.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/zookeeper-kafka.jpg" style="zoom:50%;" />
 
 ZooKeeper 主要为 Kafka 提供元数据的管理的功能。
 
@@ -115,7 +115,7 @@ ZooKeeper 主要为 Kafka 提供元数据的管理的功能。
 
 我们知道 Kafka 中 Partition(分区)是真正保存消息的地方，我们发送的消息都被放在了这里。而我们的 Partition(分区) 又存在于 Topic(主题) 这个概念中，并且我们可以给特定 Topic 指定多个 Partition。
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/KafkaTopicPartionsLayout.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/KafkaTopicPartionsLayout.png)
 
 每次添加消息到 Partition(分区) 的时候都会采用尾加法，如上图所示。Kafka 只能为我们保证 Partition(分区) 中的消息有序，而不能保证 Topic(主题) 中的 Partition(分区) 的有序。
 
@@ -166,7 +166,7 @@ if (sendResult.getRecordMetadata() != null) {
 
 我们知道消息在被追加到 Partition(分区)的时候都会分配一个特定的偏移量（offset）。偏移量（offset)表示 Consumer 当前消费到的 Partition(分区)的所在的位置。Kafka 通过偏移量（offset）可以保证消息在分区内的顺序性。
 
-![kafka offset](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/kafka-offset.jpg)
+![kafka offset](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/kafka-offset.jpg)
 
 当消费者拉取到了分区的某个消息之后，消费者会自动提交了 offset。自动提交的话会有一个问题，试想一下，当消费者刚拿到这个消息准备进行真正消费的时候，突然挂掉了，消息实际上并没有被消费，但是 offset 却被自动提交了。
 
