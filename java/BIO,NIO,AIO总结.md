@@ -72,7 +72,7 @@ BIO通信（一请求一应答）模型图如下(图源网络，原出处不明)
 
 伪异步IO模型图(图源网络，原出处不明)：
 
-![伪异步IO模型图](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/3.png)
+![伪异步IO模型图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/3-20210930090729992.png)
 
 采用线程池和任务队列可以实现一种叫做伪异步的 I/O 通信框架，它的模型图如上图所示。当有新的客户端接入时，将客户端的 Socket 封装成一个Task（该任务实现java.lang.Runnable接口）投递到后端的线程池中进行处理，JDK 的线程池维护一个消息队列和 N 个活跃线程，对消息队列中的任务进行处理。由于线程池可以设置消息队列的大小和最大线程数，因此，它的资源占用是可控的，无论多少个客户端并发访问，都不会导致资源的耗尽和宕机。
 
@@ -209,9 +209,10 @@ NIO有选择器，而IO没有。
 
 选择器用于使用单个线程处理多个通道。因此，它需要较少的线程来处理这些通道。线程之间的切换对于操作系统来说是昂贵的。 因此，为了提高系统效率选择器是有用的。
 
-![一个单线程中Selector维护3个Channel的示意图](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-2/Slector.png)
+![一个单线程中Selector维护3个Channel的示意图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/Slector.png)
 
 ### 2.3  NIO 读数据和写数据方式
+
 通常来说NIO中的所有IO都是从 Channel（通道） 开始的。
 
 - 从通道进行数据读取 ：创建一个缓冲区，然后请求通道读取数据。
@@ -219,7 +220,7 @@ NIO有选择器，而IO没有。
 
 数据读取和写入操作图示：
 
-![NIO读写数据的方式](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-2/NIO读写数据的方式.png)
+![NIO读写数据的方式](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/NIO%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F.png)
 
 
 ### 2.4 NIO核心组件简单介绍
