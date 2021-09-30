@@ -6,7 +6,7 @@
 
 首先我给大家看一张图，如果大家对这张图有些地方不太理解的话，我希望你们看完我这篇文章会恍然大悟。
 
-![Spring Cloud 总体架构](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/spring-cloud总体架构.jpg)
+![Spring Cloud 总体架构](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/spring-cloud%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84-20210930085059923.jpg)
 
 ## 什么是Spring cloud
 
@@ -36,11 +36,9 @@
 
 那怎么办呢？我们当然不会那么傻乎乎的，第一时间就是去找 **中介** 呀，它为我们提供了统一房源的地方，我们消费者只需要跑到它那里去找就行了。而对于房东来说，他们也只需要把房源在中介那里发布就行了。
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/4d161e2950414113834f2f0a8fc2c16c-new-imaged17347a0-e653-4830-9542-3d7ae4305b2b.png)
-
 那么现在，我们的模式就是这样的了。
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/24382ce6bbd44932ac38b1accade12d1-new-image2ff8affc-6f1d-49de-a8c3-801e7bad2b11.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/24382ce6bbd44932ac38b1accade12d1-new-image2ff8affc-6f1d-49de-a8c3-801e7bad2b11.png)
 
 但是，这个时候还会出现一些问题。
 
@@ -50,7 +48,7 @@
 
 针对上面的问题我们来重新构建一下上面的模式图
 
-![租房-中介模式图](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/租房-中介模式图.jpg)
+![租房-中介模式图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E7%A7%9F%E6%88%BF-%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F%E5%9B%BE.jpg)
 
 好了，举完这个:chestnut:我们就可以来看关于 `Eureka` 的一些基础概念了，你会发现这东西理解起来怎么这么简单。:punch::punch::punch:
 
@@ -94,7 +92,7 @@
 
 下面就是 `Netflix` 官方给出的 `Eureka` 架构图，你会发现和我们前面画的中介图别无二致。
 
-![Eureka架构图](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/5d723c49eca1468ab7b89af06743023c-new-imageb8aa3d41-fad4-4b38-add9-c304930ab285.png)
+![Eureka架构图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/5d723c49eca1468ab7b89af06743023c-new-imageb8aa3d41-fad4-4b38-add9-c304930ab285.png)
 
 当然，可以充当服务发现的组件有很多：`Zookeeper` ，`Consul` ， `Eureka` 等。
 
@@ -130,13 +128,13 @@ public boolean judge(@RequestBody Request request) {
 
 我们再举个:chestnut:，比如我们设计了一个秒杀系统，但是为了整个系统的 **高可用** ，我们需要将这个系统做一个集群，而这个时候我们消费者就可以拥有多个秒杀系统的调用途径了，如下图。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/秒杀系统-ribbon.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-ribbon.jpg" style="zoom:50%;" />
 
 如果这个时候我们没有进行一些 **均衡操作** ，如果我们对 `秒杀系统1` 进行大量的调用，而另外两个基本不请求，就会导致 `秒杀系统1` 崩溃，而另外两个就变成了傀儡，那么我们为什么还要做集群，我们高可用体现的意义又在哪呢？
 
 所以 `Ribbon` 出现了，注意我们上面加粗的几个字——**运行在消费者端**。指的是，`Ribbon` 是运行在消费者端的负载均衡器，如下图。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/秒杀系统-ribbon2.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-ribbon2.jpg" style="zoom:50%;" />
 
 其工作原理就是 `Consumer` 端获取到了所有的服务列表之后，在其**内部**使用**负载均衡算法**，进行对多个系统的调用。
 
@@ -235,19 +233,17 @@ public class TestController {
 
 那么什么是 熔断和降级 呢？再举个:chestnut:，此时我们整个微服务系统是这样的。服务A调用了服务B，服务B再调用了服务C，但是因为某些原因，服务C顶不住了，这个时候大量请求会在服务C阻塞。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/Hystrix1.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/Hystrix1.jpg" style="zoom:50%;" />
 
 服务C阻塞了还好，毕竟只是一个系统崩溃了。但是请注意这个时候因为服务C不能返回响应，那么服务B调用服务C的的请求就会阻塞，同理服务B阻塞了，那么服务A也会阻塞崩溃。
 
 > 请注意，为什么阻塞会崩溃。因为这些请求会消耗占用系统的线程、IO 等资源，消耗完你这个系统服务器不就崩了么。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/Hystrix2.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/Hystrix2.jpg" style="zoom:50%;" />
 
 这就叫 **服务雪崩**。妈耶，上面两个 **熔断** 和 **降级** 你都没给我解释清楚，你现在又给我扯什么 **服务雪崩** ？:tired_face::tired_face::tired_face:
 
 别急，听我慢慢道来。
-
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/513d7e7f6d574fd799195d05556f4aa7-new-image9265b6bd-41ca-4e62-86f3-4341e5bdbe6c.png)
 
 不听我也得讲下去！
 
@@ -300,7 +296,7 @@ public News getHystrixNews(@PathVariable("id") int id) {
 
 大家对网关应该很熟吧，简单来讲网关是系统唯一对外的入口，介于客户端与服务器端之间，用于对请求进行**鉴权**、**限流**、 **路由**、**监控**等功能。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/zuul-sj22o93nfdsjkdsf.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/zuul-sj22o93nfdsjkdsf.jpg" style="zoom:50%;" />
 
 没错，网关有的功能，`Zuul` 基本都有。而 `Zuul` 中最关键的就是 **路由和过滤器** 了，在官方文档中 `Zuul` 的标题就是
 
@@ -316,7 +312,7 @@ public News getHystrixNews(@PathVariable("id") int id) {
 
 比如这个时候我们已经向 `Eureka Server` 注册了两个 `Consumer` 、三个 `Provicer` ，这个时候我们再加个 `Zuul` 网关应该变成这样子了。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/zuul-sj22o93nfdsjkdsf2312.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/zuul-sj22o93nfdsjkdsf2312.jpg" style="zoom:50%;" />
 
 emmm，信息量有点大，我来解释一下。关于前面的知识我就不解释了:neutral_face:。
 
@@ -408,7 +404,7 @@ zuul:
 
 在给你们看代码之前我先给你们解释一下关于过滤器的一些注意点。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/zuul-sj22o93nfdsjkdsf2312244.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/zuul-sj22o93nfdsjkdsf2312244.jpg" style="zoom:50%;" />
 
 过滤器类型：`Pre`、`Routing`、`Post`。前置`Pre`就是在请求之前进行过滤，`Routing`路由过滤器就是我们上面所讲的路由策略，而`Post`后置过滤器就是在 `Response` 之前进行过滤的过滤器。你可以观察上图结合着理解，并且下面我会给出相应的注释。
 
@@ -493,7 +489,7 @@ public class AccessLogFilter extends ZuulFilter {
 
 当然不仅仅是令牌桶限流方式，`Zuul` 只要是限流的活它都能干，这里我只是简单举个:chestnut:。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/zuui-令牌桶限流.jpg" alt="令牌桶限流" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/zuui-%E4%BB%A4%E7%89%8C%E6%A1%B6%E9%99%90%E6%B5%81.jpg" alt="令牌桶限流" style="zoom:50%;" />
 
 我先来解释一下什么是 **令牌桶限流** 吧。
 
@@ -579,7 +575,7 @@ public class RouteFilter extends ZuulFilter {
 
 你想一下，我们的应用是不是只有启动的时候才会进行配置文件的加载，那么我们的 `Spring Cloud Config` 就暴露出一个接口给启动应用来获取它所想要的配置文件，应用获取到配置文件然后再进行它的初始化工作。就如下图。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/config-ksksks.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/config-ksksks.jpg" style="zoom:50%;" />
 
 当然这里你肯定还会有一个疑问，如果我在应用运行时去更改远程配置仓库(Git)中的对应配置文件，那么依赖于这个配置文件的已启动的应用会不会进行其相应配置的更改呢？
 
@@ -593,8 +589,6 @@ public class RouteFilter extends ZuulFilter {
 
 慢着，听我说完，`Webhooks` 虽然能解决，但是你了解一下会发现它根本不适合用于生产环境，所以基本不会使用它的。
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/1ada747175704ecba3507074847002d0-new-imagee5249fee-c5ee-4472-9983-f1bd5801387c.png)
-
 而一般我们会使用 `Bus` 消息总线 + `Spring Cloud Config` 进行配置的动态刷新。
 
 ## 引出 Spring Cloud Bus
@@ -605,7 +599,7 @@ public class RouteFilter extends ZuulFilter {
 
 而拥有了 `Spring Cloud Bus` 之后，我们只需要创建一个简单的请求，并且加上 `@ResfreshScope` 注解就能进行配置的动态修改了，下面我画了张图供你理解。
 
-<img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/springcloud-bus-s213dsfsd.jpg" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/springcloud-bus-s213dsfsd.jpg" style="zoom:50%;" />
 
 ## 总结
 

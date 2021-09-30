@@ -1,4 +1,4 @@
-![](/Users/mbpzy/images/2021050713553862.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/2021050713553862.png)
 
 大家好，我是 Guide哥！
 
@@ -8,13 +8,13 @@
 
 ## 何为 API？
 
-![](/Users/mbpzy/images/20210507153833945.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/20210507153833945.png)
 
 **API（Application Programming Interface）** 翻译过来是应用程序编程接口的意思。
 
 我们在进行后端开发的时候，主要的工作就是为前端或者其他后端服务提供 API 比如查询用户数据的 API 。
 
-![](/Users/mbpzy/images/20210507130629538.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/20210507130629538.png)
 
 但是， API 不仅仅代表后端系统暴露的接口，像框架中提供的方法也属于 API 的范畴。
 
@@ -63,7 +63,7 @@ POST   /classes：新建一个班级
 
 ## RESTful API 规范
 
-![](/Users/mbpzy/images/20210507154007779.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/20210507154007779.png)
 
 ### 动作
 
