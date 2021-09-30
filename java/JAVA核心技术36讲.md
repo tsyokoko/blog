@@ -9,7 +9,7 @@
 * `Error`是指在正常情况下,不大可能出现的情况,绝大部分的Error都会导致程序(比如JVM自身)处于非正常的、不可恢复状态。既然是非正常情况,所以不便于也不需要捕获,常 见的比如`OutOfMemoryError`之类,都是`Error`的子类。
 * `Exception`又分为`可检查(checked)`异常和`不检查(unchecked)`异常,可检查异常在源代码里必须显式地进行捕获处理,这是编译期检查的一部分
 * 不检查异常就是所谓的运行时异常,类似 `NullPointerException`、`ArrayIndexOutOfBoundsException`之类,通常是可以编码避免的逻辑错误,具体根据需要来判断是否需要捕 获,并不会在编译期强制要求。
-![](https://img-blog.csdnimg.cn/20190406111450760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70.png)
 > `异常处理的基本原则`:
 > 尽量不要捕获类似Exception这样的通用异常,而是应该捕获特定异常
 > 不要生吞(swallow)异常。这是异常处理中要特别注意的事情,因为很可能会导致非常难以诊断的诡异情况。
@@ -132,7 +132,7 @@
 
 #### 什么情况下Java程序会产生死锁?如何定位、修复?
 * `死锁`是一种特定的程序状态,在实体之间,由于`循环依赖导致`彼此一直处于等待之中,没有任何个体可以继续前进。死锁不仅仅是在线程之间会发生,存在资源独占的进程之间同样也可能出现死锁。通常来说,我们大多是聚焦在多线程场景中的死锁,指两个或多个线程之间,由于互`相持有对方需要的锁`,而永久处于阻塞的状态。
-![](https://img-blog.csdnimg.cn/20190408224832820.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094538165.png)
 * `定位死锁`最常见的方式就是利用`jstack`等工具`获取线程栈`,然后定位互相之间的依赖关系,进而找到死锁。如果是比较明显的死锁,往往jstack等就能直接定位,类似JConsole甚至 可以在图形界面进行有限的死锁检测。
 * 使用Java提供的标准管理API,ThreadMXBean,其直接就提供 fndDeadlockedThreads﻿()方法用于定位死锁。但是要注意的是,对线程进行快照本身是一个相对重量级的操作,还是要慎重选择频度和时机。
 
@@ -234,7 +234,7 @@ public class ThreadMXBeanTest {
 > 需求是每个对象一个线程，分别在每个线程里计算各自的数据，最终等到所有线程计算完毕，我还需要将每个有共通的对象进行合并，所以用它很合适。
 
 #### 并发包中的ConcurrentLinkedQueue和LinkedBlockingQueue有什么区别？
-![线程安全队列一览](https://img-blog.csdnimg.cn/20190409124720516.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![线程安全队列一览](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094543661.png)
 * `Concurrent`类型基于`lock-free`，在常见的多线程访问场景，一般可以提供较高吞吐量。而`LinkedBlockingQueue`内部则是`基于锁`，并提供了`BlockingQueue`的等待性方法。
 * `ArrayBlockingQueue`是最典型的的有界队列，其内部以`fnal`的数组保存数据，数组的大小就决定了队列的边界，所以我们在创建ArrayBlockingQueue时，都要指定容量
 * `LinkedBlockingQueue`，容易被`误解为无边界`，但其实其行为和内部代码都是`基于有界的逻辑实现`的，只不过如果我们没有在创建队列时就指定容量，那么其容量限制就自动被设置为`Integer.MAX_VALUE`，成为了无界队列。
@@ -281,7 +281,7 @@ Executors目前提供了5种不同的线程池创建配置：
 > `解析`，在这一步会将常量池中的`符号引用`替换为`直接引用`。在Java虚拟机规范中，详细介绍了类、接口、方法和字段等各个方面的解析。
 *  `最后是初始化阶段`（initialization），这一步真正去执行类初始化的代码逻辑，包括静态字段赋值的动作，以及执行类定义中的静态初始化块内的逻辑，编译器在编译阶段就会把这部分逻辑整理好，父类型的初始化逻辑优先于当前类型的逻辑。
 * 再来谈谈`双亲委派模型`，简单说就是当类加载器（Class-Loader）试图加载某个类型的时候，除非父加载器找不到相应类型，否则尽量将这个任务代理给当前加载器的父加载器去做。使用委派模型的目的是避免重复加载Java类型。
-![双亲委派模型](https://img-blog.csdnimg.cn/20190409151248407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![双亲委派模型](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094551647.png)
 
 #### 有哪些方法可以在运行时动态生成一个Java类？
 * 我们可以从常见的Java类来源分析，通常的开发过程是，开发者编写Java代码，调用javac编译成class文件，然后通过类加载机制载入JVM，就成为应用运行时可以使用的Java类了。
@@ -297,7 +297,7 @@ Executors目前提供了5种不同的线程池创建配置：
 * `运行时常量池`，这是`方法区的一部分`。如果仔细分析过反编译的类文件结构，你能看到`版本号`、`字段`、`方法`、`超类`、`接口`等各种信息，还有一项信息就是`常量池`。 Java的常量池可以存放各种常量信息，不管是编译期生成的各种字面量，还是需要在运行时决定的符号引用，所以它比一般语言的符号表存储的信息更加宽泛。
 * `本地方法栈`（Native Method Stack）。它和Java虚拟机栈是非常相似的，支持对本地方法的调用，也是每个线程都会创建一个
 
-![](https://img-blog.csdnimg.cn/20190409170529393.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094555541.png)
 #### Java对象是不是都创建在堆上的呢？
 *  有一些观点，认为通过逃逸分析， JVM会在栈上分配那些不会逃逸的对象，这在理论上是可行的，但是取决于JVM设计者的选择
 *  目前很多书籍还是基于JDK 7以前的版本， JDK已经发生了很大变化， Intern字符串的缓存和静态变量曾经都被分配在永久代上，而永久代已经被元数据区取代。但是， Intern字符串缓存和静态变量并不是被转移到元数据区，而是直接在堆上分配，所以这一点同样符合对象实例都是分配在堆上。
@@ -327,7 +327,7 @@ Executors目前提供了5种不同的线程池创建配置：
 * [JConsole官方教程](https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html)。我这里特别推荐[Java Mission Control（JMC）](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)，这是一个非常强大的工具，不仅仅能够使用JMX进行普通的管理、监控任务，还可以配合Java Flight Recorder（JFR）技术，以非常低的开销，收集和分析JVM底层的Profling和事件等信息。
 
 **堆内部是什么结构？**
-![](https://img-blog.csdnimg.cn/20190409174432758.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70) 
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094657536.png) 
 你可以看到，按照通常的GC年代方式划分， Java堆内分为：
 
 **新生代**
@@ -335,7 +335,7 @@ Executors目前提供了5种不同的线程池创建配置：
 * JVM会随意选取一个Survivor区域作为“to”，然后会在GC过程中进行区域间拷贝，也就是将Eden中存活下来的对象和from区域的对象，拷贝到这个“to”区域。这种设计主要是为了防止内存的碎片化，并进一步清理无用对象。
 * 从内存模型而不是垃圾收集的角度，对Eden区域继续进行划分， Hotspot JVM还有一个概念叫做（TLAB）。这是JVM为每个线程分配的一个私有缓存区域，否则，多线程同时分配内存时，为避免操作同一地址，可能需要使用加锁等机制，进而影响分配速度，TLAB仍然在堆上，它是分配在Eden区域内的。其内部结构比较直观易懂， start、 end就是起始地址， top（指针）则表示已经分配到哪里了。所以我们分配新对象， JVM就会移动top，当top和end相遇时，即表示该缓存已满， JVM会试图再从Eden里分配一块儿。
 
-![](https://img-blog.csdnimg.cn/20190409174715206.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094654859.png)
 
 **老年代**
 * 放置长生命周期的对象，通常都是从Survivor区域拷贝过来的对象。当然，也有特殊情况，我们知道普通的对象会被分配在TLAB上；如果对象较大， JVM会试图直接分配在Eden其他位置上；如果对象太大，完全无法在新生代找到足够长的连续空闲空间， JVM就会直接分配到老年代。
@@ -377,16 +377,16 @@ Executors目前提供了5种不同的线程池创建配置：
 
 第一， Java应用不断创建对象，通常都是分配在Eden区域，当其空间占用达到一定阈值时，触发minor GC。仍然被引用的对象（绿色方块）存活下来，被复制到JVM选择的Survivor区域，而没有被引用的对象（黄色方块）则被回收。注意，我给存活对象标记了“数字1”，这是为了表明对象的存活时间。
 
-![](https://img-blog.csdnimg.cn/20190409183348554.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/20190409183348554.png)
 
 第二， 经过一次`Minor GC`， Eden就会空闲下来，直到再次达到`Minor GC`触发条件，这时候，另外一个`Survivor`区域则会成为`to`区域， `Eden`区域的存活对象和`From`区域对象，都会被复制到`to`区域，并且存活的年龄计数会被加`1`。
 
-![](https://img-blog.csdnimg.cn/20190409183455640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094646359.png)
 
 第三， 类似第二步的过程会发生很多次，直到有对象年龄计数达到阈值，这时候就会发生所谓的晋升（Promotion）过程，如下图所示，超过阈值的对象会被晋升到老年代。
 这个阈值是可以通过参数指定：`-XX:MaxTenuringThreshold=<N>`
 
-![](https://img-blog.csdnimg.cn/20190409183559189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094642288.png)
 
 后面就是`老年代GC`，具体取决于选择的`GC`选项，对应不同的算法。通常我们把`老年代GC`叫作`Major GC，`将对整个`堆进行的清理`叫作`Full GC`，但是这个也没有那么绝对，因为不同的老年代GC算法其实表现差异很大，例如`CMS`， `“concurrent”`就体现在清理工作是与工作线程一起并发运行的。
 
@@ -416,7 +416,7 @@ Executors目前提供了5种不同的线程池创建配置：
 #### 谈谈常用的分布式ID的设计方案?Snowflake是否受冬令时切换影响?
 * 基于数据库自增序列的实现。这种方式优缺点都非常明显，好处是简单易用,但是在扩展性和可靠性等方面存在局限性。
 * 基于Twitter 早期开源的Snowflake的实现,以及相关改动方案。
-![](https://img-blog.csdnimg.cn/20190409221903872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70-20210930094638067.png)
 * 整体长度通常是64 (1 + 41 + 10+ 12 = 64)位,适合使用Java语言中的long类型来存储。
 * 头部是1位的正负标识位。跟着的高位部分包含41位时间戳,通常使用`System.currentTimeMillis()`
 * 后面是`10位`的`WorkerID`,标准定义是5位数据中心 + 5位机器ID,组成了机器编􏱆号，以区分不同的集群节点。

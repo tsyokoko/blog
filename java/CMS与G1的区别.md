@@ -54,7 +54,7 @@
 
 4、**筛选回收**（Live Data Counting and Evacuation）：最后筛选回收阶段首先对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间来制定回收计划，这一过程同样是需要停顿线程的，但Sun公司透露这个阶段其实也可以做到并发，但考虑到停顿线程将大幅度提高收集效率，所以选择停顿。下图为G1收集器运行示意图：
 
-![img](/Users/mbpzy/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h4eGN5enl5,size_16,color_FFFFFF,t_70-20210912225106454.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h4eGN5enl5,size_16,color_FFFFFF,t_70-20210912225106454.png)
 
 **CMS：以获取最短回收停顿时间为目标的收集器，基于并发“标记清理”实现**
 
@@ -110,6 +110,5 @@
 
 4、**筛选回收**（Live Data Counting and Evacuation）：最后筛选回收阶段首先对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间来制定回收计划，这一过程同样是需要停顿线程的，但Sun公司透露这个阶段其实也可以做到并发，但考虑到停顿线程将大幅度提高收集效率，所以选择停顿。下图为G1收集器运行示意图：
 
-![img](/Users/mbpzy/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h4eGN5enl5,size_16,color_FFFFFF,t_70.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h4eGN5enl5,size_16,color_FFFFFF,t_70.png)
 
-# 

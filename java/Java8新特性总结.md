@@ -844,7 +844,7 @@ System.out.println(formatterOfYyyy.format(rightNow));
 
 从下图可以更清晰的看到具体的错误，并且 IDEA 已经智能地提示更倾向于使用  `yyyy` 而不是  `YYYY` 。
 
-![](https://img-blog.csdnimg.cn/2021042717491413.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/2021042717491413.png)
 
 ### LocalDateTime(本地日期时间)
 

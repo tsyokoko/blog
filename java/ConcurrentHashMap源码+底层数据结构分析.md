@@ -33,7 +33,7 @@ Segment是一种可重入锁，是一种数组和链表的结构，一个Segment
 - 第一次Hash定位到Segment，
 - 第二次Hash定位到元素所在的链表的头部
 
-![img](/Users/mbpzy/images/1460000024432654-20210927113301921.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1460000024432654-20210927113301921.png)
 
 正是通过Segment分段锁技术，将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问，能够实现真正的并发访问。
 
@@ -43,7 +43,7 @@ Segment是一种可重入锁，是一种数组和链表的结构，一个Segment
 
 在JDK8ConcurrentHashMap内部机构：数组+链表+红黑树，Java 8在链表长度超过一定阈值(8)时将链表（寻址时间复杂度为O(N)）转换为红黑树（寻址时间复杂度为O(long(N)))，结构基本上与功能和JDK8的HashMap一样，只不过ConcurrentHashMap保证线程安全性。
 
-![img](/Users/mbpzy/images/1460000024432653-20210927113301922.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1460000024432653-20210927113301922.png)
 
 但在JDK1.8中摒弃了Segment分段锁的数据结构，基于CAS操作保证数据的获取以及使用synchronized关键字对相应数据段加锁来实现线程安全，这进一步提高了并发性。（**CAS原理详情**[《面试：为了进阿里，又把并发CAS（Compare and Swap）实现重新精读一遍》)](https://segmentfault.com/a/1190000023839912)
 )）

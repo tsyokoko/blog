@@ -9,7 +9,7 @@
 
 AQS 的全称为 `AbstractQueuedSynchronizer` ，翻译过来的意思就是**抽象队列同步器**。这个类在 `java.util.concurrent.locks` 包下面。
 
-![enter image description here](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/Java%20%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%EF%BC%9A%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BB%93/AQS.png)
+![enter image description here](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/AQS.png)
 
 AQS 就是一个抽象类，主要用来构建锁和同步器。
 
@@ -34,7 +34,7 @@ AQS 核心思想是，**如果被请求的共享资源空闲，则将当前请�
 
 看个 AQS(`AbstractQueuedSynchronizer`)原理图：
 
-![enter image description here](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/Java%20%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%EF%BC%9A%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BB%93/CLH.png)
+![enter image description here](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/CLH.png)
 
 AQS 使用一个 int 成员变量来表示同步状态，通过内置的 FIFO 队列来完成获取资源线程的排队工作。AQS 使用 CAS 对该同步状态进行原子操作实现对其值的修改。
 

@@ -56,7 +56,7 @@
 
 BIO通信（一请求一应答）模型图如下(图源网络，原出处不明)：
 
-![传统BIO通信模型图](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2.png)
+![传统BIO通信模型图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/2-20210930093743627.png)
 
 采用 **BIO 通信模型** 的服务端，通常由一个独立的 Acceptor 线程负责监听客户端的连接。我们一般通过在`while(true)` 循环中服务端会调用 `accept()` 方法等待接收客户端的连接的方式监听请求，请求一旦接收到一个连接请求，就可以建立通信套接字在这个通信套接字上进行读写操作，此时不能再接收其他客户端连接请求，只能等待同当前连接的客户端的操作执行完成， 不过可以通过多线程来支持多个客户端的连接，如上图所示。
 
@@ -72,7 +72,7 @@ BIO通信（一请求一应答）模型图如下(图源网络，原出处不明)
 
 伪异步IO模型图(图源网络，原出处不明)：
 
-![伪异步IO模型图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/3-20210930090729992.png)
+![伪异步IO模型图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/3-20210930090729992-20210930093747472.png)
 
 采用线程池和任务队列可以实现一种叫做伪异步的 I/O 通信框架，它的模型图如上图所示。当有新的客户端接入时，将客户端的 Socket 封装成一个Task（该任务实现java.lang.Runnable接口）投递到后端的线程池中进行处理，JDK 的线程池维护一个消息队列和 N 个活跃线程，对消息队列中的任务进行处理。由于线程池可以设置消息队列的大小和最大线程数，因此，它的资源占用是可控的，无论多少个客户端并发访问，都不会导致资源的耗尽和宕机。
 

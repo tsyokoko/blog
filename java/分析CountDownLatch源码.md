@@ -1,4 +1,4 @@
-![类方法](https://img-blog.csdnimg.cn/20190321214421587.png)
+![类方法](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/20190321214421587.png)
 ## 概述
 * 允许一个线程的或多个线程等待其他线程完成操作。和join方法类似，初始化对象时通过传入一个固定的计数器总数，线程方法执行时调用countDown给计数器减1，当计数器0时，就会恢复等待的线程继续执行。
 * CountDownLatch的计数器不能重用。只能使用一次
@@ -72,7 +72,7 @@ Thread-3：开始处理表格数据
 ```
 ## 源码分析
 ### 获取一个countDownLatch时
-![](https://img-blog.csdnimg.cn/2019032122130289.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/2019032122130289.png)
 * 源码中可以看出是如果初始传入的j计数器为0时是直接抛出异常的；
 * 内部是通过new Sync一个内部返回一个对象的。Sync是一个内部同步器类，继承AQS。
 

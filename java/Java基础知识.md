@@ -72,13 +72,13 @@
 ### Java 语言有哪些特点?
 
 1. 简单易学；
-2. 面向对象（封装，继承，多态）；
-3. 平台无关性（ Java 虚拟机实现平台无关性）；
-4. 支持多线程（ C++ 语言没有内置的多线程机制，因此必须调用操作系统的多线程功能来进行多线程程序设计，而 Java 语言却提供了多线程支持）；
-5. 可靠性；
-6. 安全性；
-7. 支持网络编程并且很方便（ Java 语言诞生本身就是为简化网络编程设计的，因此 Java 语言不仅支持网络编程而且很方便）；
-8. 编译与解释并存；
+1. 面向对象（封装，继承，多态）；
+1. 平台无关性（ Java 虚拟机实现平台无关性）；
+1. 支持多线程（ C++ 语言没有内置的多线程机制，因此必须调用操作系统的多线程功能来进行多线程程序设计，而 Java 语言却提供了多线程支持）；
+1. 可靠性；
+1. 安全性；
+1. 支持网络编程并且很方便（ Java 语言诞生本身就是为简化网络编程设计的，因此 Java 语言不仅支持网络编程而且很方便）；
+1. 编译与解释并存；
 
 > **🐛 修正（参见： [issue#544](https://github.com/Snailclimb/JavaGuide/issues/544)）** ：C++11 开始（2011 年的时候）,C++就引入了多线程库，在 windows、linux、macos 都可以使用`std::thread`和`std::async`来创建线程。参考链接：http://www.cplusplus.com/reference/thread/thread/?kw=thread
 
@@ -94,7 +94,7 @@ Java 虚拟机（JVM）是运行 Java 字节码的虚拟机。JVM 有针对不�
 
 **Java 程序从源代码到运行一般有下面 3 步：**
 
-![Java程序运行过程](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/Java%20%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
+![Java程序运行过程](/Users/mbpzy/images/Java%20%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
 
 我们需要格外注意的是 .class->机器码 这一步。在这一步 JVM 类加载器首先加载字节码文件，然后通过解释器逐行解释执行，这种方式的执行速度会相对比较慢。而且，有些方法和代码块是经常需要被调用的(也就是所谓的热点代码)，所以后面引进了 JIT 编译器，而 JIT 属于运行时编译。当 JIT 编译器完成第一次编译后，其会将字节码对应的机器码保存下来，下次可以直接使用。而我们知道，机器码的运行效率肯定是高于 Java 解释器的。这也解释了我们为什么经常会说 Java 是编译与解释共存的语言。
 
@@ -132,18 +132,18 @@ Java 语言既具有编译型语言的特征，也具有解释型语言的特征
 **总结：**
 
 1. Oracle JDK 大概每 6 个月发一次主要版本，而 OpenJDK 版本大概每三个月发布一次。但这不是固定的，我觉得了解这个没啥用处。详情参见：[https://blogs.oracle.com/java-platform-group/update-and-faq-on-the-java-se-release-cadence](https://blogs.oracle.com/java-platform-group/update-and-faq-on-the-java-se-release-cadence) 。
-2. OpenJDK 是一个参考模型并且是完全开源的，而 Oracle JDK 是 OpenJDK 的一个实现，并不是完全开源的；
-3. Oracle JDK 比 OpenJDK 更稳定。OpenJDK 和 Oracle JDK 的代码几乎相同，但 Oracle JDK 有更多的类和一些错误修复。因此，如果您想开发企业/商业软件，我建议您选择 Oracle JDK，因为它经过了彻底的测试和稳定。某些情况下，有些人提到在使用 OpenJDK 可能会遇到了许多应用程序崩溃的问题，但是，只需切换到 Oracle JDK 就可以解决问题；
-4. 在响应性和 JVM 性能方面，Oracle JDK 与 OpenJDK 相比提供了更好的性能；
-5. Oracle JDK 不会为即将发布的版本提供长期支持，用户每次都必须通过更新到最新版本获得支持来获取最新版本；
-6. Oracle JDK 使用 BCL/OTN 协议获得许可，而 OpenJDK 根据 GPL v2 许可获得许可。
+1. OpenJDK 是一个参考模型并且是完全开源的，而 Oracle JDK 是 OpenJDK 的一个实现，并不是完全开源的；
+1. Oracle JDK 比 OpenJDK 更稳定。OpenJDK 和 Oracle JDK 的代码几乎相同，但 Oracle JDK 有更多的类和一些错误修复。因此，如果您想开发企业/商业软件，我建议您选择 Oracle JDK，因为它经过了彻底的测试和稳定。某些情况下，有些人提到在使用 OpenJDK 可能会遇到了许多应用程序崩溃的问题，但是，只需切换到 Oracle JDK 就可以解决问题；
+1. 在响应性和 JVM 性能方面，Oracle JDK 与 OpenJDK 相比提供了更好的性能；
+1. Oracle JDK 不会为即将发布的版本提供长期支持，用户每次都必须通过更新到最新版本获得支持来获取最新版本；
+1. Oracle JDK 使用 BCL/OTN 协议获得许可，而 OpenJDK 根据 GPL v2 许可获得许可。
 
 🌈 拓展一下：
 
 - BCL 协议（Oracle Binary Code License Agreement）： 可以使用JDK（支持商用），但是不能进行修改。
 - OTN 协议（Oracle Technology Network License Agreement）： 11 及之后新发布的JDK用的都是这个协议，可以自己私下用，但是商用需要付费。
 
-![](https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/java-guide-blog/20210425151835918.png)
+![](/Users/mbpzy/images/20210425151835918.png)
 
 相关阅读👍：[《Differences Between Oracle JDK and OpenJDK》](https://www.baeldung.com/oracle-jdk-vs-openjdk)
 
@@ -169,13 +169,15 @@ Java 语言既具有编译型语言的特征，也具有解释型语言的特征
 ### 字符型常量和字符串常量的区别?
 
 1. **形式** : 字符常量是单引号引起的一个字符，字符串常量是双引号引起的 0 个或若干个字符
-2. **含义** : 字符常量相当于一个整型值( ASCII 值),可以参加表达式运算; 字符串常量代表一个地址值(该字符串在内存中存放位置)
-3. **占内存大小** ： 字符常量只占 2 个字节; 字符串常量占若干个字节 (**注意： char 在 Java 中占两个字节**),
+
+1. **含义** : 字符常量相当于一个整型值( ASCII 值),可以参加表达式运算; 字符串常量代表一个地址值(该字符串在内存中存放位置)
+
+1. **占内存大小** ： 字符常量只占 2 个字节; 字符串常量占若干个字节 (**注意： char 在 Java 中占两个字节**),
 
    > 字符封装类 `Character` 有一个成员常量 `Character.SIZE` 值为 16,单位是`bits`,该值除以 8(`1byte=8bits`)后就可以得到 2 个字节
 
 > java 编程思想第四版：2.2.2 节
-> ![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-15/86735519.jpg)
+> ![](/Users/mbpzy/images/86735519.jpg)
 
 ### 注释
 
@@ -183,9 +185,9 @@ Java 中的注释有三种：
 
 1. 单行注释
 
-2. 多行注释
+1. 多行注释
 
-3. 文档注释。
+1. 文档注释。
 
 在我们编写代码的时候，如果代码量比较少，我们自己或者团队其他成员还可以很轻易地看懂代码，但是当项目结构一旦复杂起来，我们就需要用到注释了。注释并不会执行(编译器在编译代码之前会把代码中的所有注释抹掉,字节码中不保留注释)，是我们程序员写给自己看的，注释是你的代码说明书，能够帮助看代码的人快速地理清代码之间的逻辑关系。因此，在写程序的时候随手加上注释是一个非常好的习惯。
 
@@ -200,8 +202,7 @@ Java 中的注释有三种：
 > 去掉下面复杂的注释，只需要创建一个与注释所言同一事物的函数即可
 >
 > ```java
-> // check to see if the employee is eligible for full benefits
-> if ((employee.flags & HOURLY_FLAG) && (employee.age > 65))
+> // check to see if the employee is eligible for full benefitsif ((employee.flags & HOURLY_FLAG) && (employee.age > 65))
 > ```
 >
 > 应替换为
@@ -240,12 +241,12 @@ Java 中的注释有三种：
 在循环结构中，当循环条件不满足或者循环次数达到要求时，循环会正常结束。但是，有时候可能需要在循环的过程中，当发生了某种条件之后 ，提前终止循环，这就需要用到下面几个关键词：
 
 1. continue ：指跳出当前的这一次循环，继续下一次循环。
-2. break ：指跳出整个循环体，继续执行循环下面的语句。
+1. break ：指跳出整个循环体，继续执行循环下面的语句。
 
 return 用于跳出所在方法，结束该方法的运行。return 一般有两种用法：
 
 1. `return;` ：直接使用 return 结束方法执行，用于没有返回值函数的方法
-2. `return value;` ：return 一个特定值，用于有返回值函数的方法
+1. `return value;` ：return 一个特定值，用于有返回值函数的方法
 
 ### Java 泛型了解么？什么是类型擦除？介绍一下常用的通配符？
 
@@ -254,17 +255,7 @@ Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了�
 Java 的泛型是伪泛型，这是因为 Java 在编译期间，所有的泛型信息都会被擦掉，这也就是通常所说类型擦除 。
 
 ```java
-List<Integer> list = new ArrayList<>();
-
-list.add(12);
-//这里直接添加会报错
-list.add("a");
-Class<? extends List> clazz = list.getClass();
-Method add = clazz.getDeclaredMethod("add", Object.class);
-//但是通过反射添加，是可以的
-add.invoke(list, "kl");
-
-System.out.println(list);
+List<Integer> list = new ArrayList<>();list.add(12);//这里直接添加会报错list.add("a");Class<? extends List> clazz = list.getClass();Method add = clazz.getDeclaredMethod("add", Object.class);//但是通过反射添加，是可以的add.invoke(list, "kl");System.out.println(list);
 ```
 
 泛型一般有三种使用方式:泛型类、泛型接口、泛型方法。
@@ -272,20 +263,7 @@ System.out.println(list);
 **1.泛型类**：
 
 ```java
-//此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型
-//在实例化泛型类时，必须指定T的具体类型
-public class Generic<T> {
-
-    private T key;
-
-    public Generic(T key) {
-        this.key = key;
-    }
-
-    public T getKey() {
-        return key;
-    }
-}
+//此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型//在实例化泛型类时，必须指定T的具体类型public class Generic<T> {    private T key;    public Generic(T key) {        this.key = key;    }    public T getKey() {        return key;    }}
 ```
 
 如何实例化泛型类：
@@ -297,52 +275,31 @@ Generic<Integer> genericInteger = new Generic<Integer>(123456);
 **2.泛型接口** ：
 
 ```java
-public interface Generator<T> {
-    public T method();
-}
+public interface Generator<T> {    public T method();}
 ```
 
 实现泛型接口，不指定类型：
 
 ```java
-class GeneratorImpl<T> implements Generator<T>{
-    @Override
-    public T method() {
-        return null;
-    }
-}
+class GeneratorImpl<T> implements Generator<T>{    @Override    public T method() {        return null;    }}
 ```
 
 实现泛型接口，指定类型：
 
 ```java
-class GeneratorImpl implements Generator<String>{
-    @Override
-    public String method() {
-        return "hello";
-    }
-}
+class GeneratorImpl implements Generator<String>{    @Override    public String method() {        return "hello";    }}
 ```
 
 **3.泛型方法** ：
 
 ```java
-public static <E> void printArray(E[] inputArray) {
-    for (E element : inputArray) {
-        System.out.printf("%s ", element);
-    }
-    System.out.println();
-}
+public static <E> void printArray(E[] inputArray) {    for (E element : inputArray) {        System.out.printf("%s ", element);    }    System.out.println();}
 ```
 
 使用：
 
 ```java
-// 创建不同类型数组： Integer, Double 和 Character
-Integer[] intArray = { 1, 2, 3 };
-String[] stringArray = { "Hello", "World" };
-printArray(intArray);
-printArray(stringArray);
+// 创建不同类型数组： Integer, Double 和 CharacterInteger[] intArray = { 1, 2, 3 };String[] stringArray = { "Hello", "World" };printArray(intArray);printArray(stringArray);
 ```
 
 **常用的通配符为： T，E，K，V，？**
@@ -363,9 +320,7 @@ printArray(stringArray);
 `Object` 类 `equals()` 方法：
 
 ```java
-public boolean equals(Object obj) {
-     return (this == obj);
-}
+public boolean equals(Object obj) {     return (this == obj);}
 ```
 
 `equals()` 方法存在两种使用情况：
@@ -376,23 +331,7 @@ public boolean equals(Object obj) {
 **举个例子：**
 
 ```java
-public class test1 {
-    public static void main(String[] args) {
-        String a = new String("ab"); // a 为一个引用
-        String b = new String("ab"); // b为另一个引用,对象的内容一样
-        String aa = "ab"; // 放在常量池中
-        String bb = "ab"; // 从常量池中查找
-        if (aa == bb) // true
-            System.out.println("aa==bb");
-        if (a == b) // false，非同一对象
-            System.out.println("a==b");
-        if (a.equals(b)) // true
-            System.out.println("aEQb");
-        if (42 == 42.0) { // true
-            System.out.println("true");
-        }
-    }
-}
+public class test1 {    public static void main(String[] args) {        String a = new String("ab"); // a 为一个引用        String b = new String("ab"); // b为另一个引用,对象的内容一样        String aa = "ab"; // 放在常量池中        String bb = "ab"; // 从常量池中查找        if (aa == bb) // true            System.out.println("aa==bb");        if (a == b) // false，非同一对象            System.out.println("a==b");        if (a.equals(b)) // true            System.out.println("aEQb");        if (42 == 42.0) { // true            System.out.println("true");        }    }}
 ```
 
 **说明：**
@@ -403,27 +342,7 @@ public class test1 {
 `String`类`equals()`方法：
 
 ```java
-public boolean equals(Object anObject) {
-    if (this == anObject) {
-        return true;
-    }
-    if (anObject instanceof String) {
-        String anotherString = (String)anObject;
-        int n = value.length;
-        if (n == anotherString.value.length) {
-            char v1[] = value;
-            char v2[] = anotherString.value;
-            int i = 0;
-            while (n-- != 0) {
-                if (v1[i] != v2[i])
-                    return false;
-                i++;
-            }
-            return true;
-        }
-    }
-    return false;
-}
+public boolean equals(Object anObject) {    if (this == anObject) {        return true;    }    if (anObject instanceof String) {        String anotherString = (String)anObject;        int n = value.length;        if (n == anotherString.value.length) {            char v1[] = value;            char v2[] = anotherString.value;            int i = 0;            while (n-- != 0) {                if (v1[i] != v2[i])                    return false;                i++;            }            return true;        }    }    return false;}
 ```
 
 ### hashCode()与 equals()
@@ -469,8 +388,8 @@ public native int hashCode();
 Java 中有 8 种基本数据类型，分别为：
 
 1. 6 种数字类型 ：`byte`、`short`、`int`、`long`、`float`、`double`
-2. 1 种字符类型：`char`
-3. 1 种布尔型：`boolean`。
+1. 1 种字符类型：`char`
+1. 1 种布尔型：`boolean`。
 
 这 8 种基本数据类型的默认值以及所占空间的大小如下：
 
@@ -490,7 +409,7 @@ Java 中有 8 种基本数据类型，分别为：
 **注意：**
 
 1. Java 里使用 `long` 类型的数据一定要在数值后面加上 **L**，否则将作为整型解析。
-2. `char a = 'h'`char :单引号，`String a = "hello"` :双引号。
+1. `char a = 'h'`char :单引号，`String a = "hello"` :双引号。
 
 这八种基本类型都有对应的包装类分别为：`Byte`、`Short`、`Integer`、`Long`、`Float`、`Double`、`Character`、`Boolean` 。
 
@@ -510,40 +429,13 @@ Java 中有 8 种基本数据类型，分别为：
 举例：
 
 ```java
-Integer i = 10;  //装箱
-int n = i;   //拆箱
+Integer i = 10;  //装箱int n = i;   //拆箱
 ```
 
 上面这两行代码对应的字节码为：
 
 ```java
-   L1
-
-    LINENUMBER 8 L1
-
-    ALOAD 0
-
-    BIPUSH 10
-
-    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
-
-    PUTFIELD AutoBoxTest.i : Ljava/lang/Integer;
-
-   L2
-
-    LINENUMBER 9 L2
-
-    ALOAD 0
-
-    ALOAD 0
-
-    GETFIELD AutoBoxTest.i : Ljava/lang/Integer;
-
-    INVOKEVIRTUAL java/lang/Integer.intValue ()I
-
-    PUTFIELD AutoBoxTest.n : I
-
-    RETURN
+   L1    LINENUMBER 8 L1    ALOAD 0    BIPUSH 10    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;    PUTFIELD AutoBoxTest.i : Ljava/lang/Integer;   L2    LINENUMBER 9 L2    ALOAD 0    ALOAD 0    GETFIELD AutoBoxTest.i : Ljava/lang/Integer;    INVOKEVIRTUAL java/lang/Integer.intValue ()I    PUTFIELD AutoBoxTest.n : I    RETURN
 ```
 
 从字节码中，我们发现装箱其实就是调用了 包装类的`valueOf()`方法，拆箱其实就是调用了 `xxxValue()`方法。
@@ -560,77 +452,19 @@ Java 基本类型的包装类的大部分都实现了常量池技术。`Byte`,`S
 **Integer 缓存源码：**
 
 ```java
-/**
-
-*此方法将始终缓存-128 到 127（包括端点）范围内的值，并可以缓存此范围之外的其他值。
-
-*/
-
-public static Integer valueOf(int i) {
-
-    if (i >= IntegerCache.low && i <= IntegerCache.high)
-
-      return IntegerCache.cache[i + (-IntegerCache.low)];
-
-    return new Integer(i);
-
-}
-
-private static class IntegerCache {
-
-    static final int low = -128;
-
-    static final int high;
-
-    static final Integer cache[];
-
-}
+/***此方法将始终缓存-128 到 127（包括端点）范围内的值，并可以缓存此范围之外的其他值。*/public static Integer valueOf(int i) {    if (i >= IntegerCache.low && i <= IntegerCache.high)      return IntegerCache.cache[i + (-IntegerCache.low)];    return new Integer(i);}private static class IntegerCache {    static final int low = -128;    static final int high;    static final Integer cache[];}
 ```
 
 **`Character` 缓存源码:**
 
 ```java
-public static Character valueOf(char c) {
-
-    if (c <= 127) { // must cache
-
-      return CharacterCache.cache[(int)c];
-
-    }
-
-    return new Character(c);
-
-}
-
-
-
-private static class CharacterCache {
-
-    private CharacterCache(){}
-
-
-
-    static final Character cache[] = new Character[127 + 1];
-
-    static {
-
-        for (int i = 0; i < cache.length; i++)
-
-            cache[i] = new Character((char)i);
-
-    }
-
-}
+public static Character valueOf(char c) {    if (c <= 127) { // must cache      return CharacterCache.cache[(int)c];    }    return new Character(c);}private static class CharacterCache {    private CharacterCache(){}    static final Character cache[] = new Character[127 + 1];    static {        for (int i = 0; i < cache.length; i++)            cache[i] = new Character((char)i);    }}
 ```
 
 **`Boolean` 缓存源码：**
 
 ```java
-public static Boolean valueOf(boolean b) {
-
-    return (b ? TRUE : FALSE);
-
-}
+public static Boolean valueOf(boolean b) {    return (b ? TRUE : FALSE);}
 ```
 
 如果超出对应范围仍然会去创建新的对象，缓存的范围区间的大小只是在性能和资源之间的权衡。
@@ -638,33 +472,13 @@ public static Boolean valueOf(boolean b) {
 两种浮点数类型的包装类 `Float`,`Double` 并没有实现常量池技术。
 
 ```java
-Integer i1 = 33;
-
-Integer i2 = 33;
-
-System.out.println(i1 == i2);// 输出 true
-
-Float i11 = 333f;
-
-Float i22 = 333f;
-
-System.out.println(i11 == i22);// 输出 false
-
-Double i3 = 1.2;
-
-Double i4 = 1.2;
-
-System.out.println(i3 == i4);// 输出 false
+Integer i1 = 33;Integer i2 = 33;System.out.println(i1 == i2);// 输出 trueFloat i11 = 333f;Float i22 = 333f;System.out.println(i11 == i22);// 输出 falseDouble i3 = 1.2;Double i4 = 1.2;System.out.println(i3 == i4);// 输出 false
 ```
 
 下面我们来看一下问题。下面的代码的输出结果是 `true` 还是 `flase` 呢？
 
 ```java
-Integer i1 = 40;
-
-Integer i2 = new Integer(40);
-
-System.out.println(i1==i2);
+Integer i1 = 40;Integer i2 = new Integer(40);System.out.println(i1==i2);
 ```
 
 `Integer i1=40` 这一行代码会发生装箱，也就是说这行代码等价于 `Integer i1=Integer.valueOf(40)` 。因此，`i1` 直接使用的是常量池中的对象。而`Integer i1 = new Integer(40)` 会直接创建新的对象。
@@ -673,7 +487,7 @@ System.out.println(i1==i2);
 
 记住：**所有整型包装类对象之间值的比较，全部使用 equals 方法比较**。
 
-![](https://img-blog.csdnimg.cn/20210422164544846.png)
+![](/Users/mbpzy/images/20210422164544846.png)
 
 ## 方法（函数）
 
@@ -686,53 +500,31 @@ System.out.println(i1==i2);
 **1.无参数无返回值的方法**
 
 ```java
-// 无参数无返回值的方法(如果方法没有返回值，不能不写，必须写void，表示没有返回值)
-public void f1() {
-    System.out.println("无参数无返回值的方法");
-}
+// 无参数无返回值的方法(如果方法没有返回值，不能不写，必须写void，表示没有返回值)public void f1() {    System.out.println("无参数无返回值的方法");}
 ```
 
 **2.有参数无返回值的方法**
 
 ```java
-/**
-* 有参数无返回值的方法
-* 参数列表由零组到多组“参数类型+形参名”组合而成，多组参数之间以英文逗号（,）隔开，形参类型和形参名之间以英文空格隔开
-*/
-public void f2(int a, String b, int c) {
-    System.out.println(a + "-->" + b + "-->" + c);
-}
+/*** 有参数无返回值的方法* 参数列表由零组到多组“参数类型+形参名”组合而成，多组参数之间以英文逗号（,）隔开，形参类型和形参名之间以英文空格隔开*/public void f2(int a, String b, int c) {    System.out.println(a + "-->" + b + "-->" + c);}
 ```
 
 **3.有返回值无参数的方法**
 
 ```java
-// 有返回值无参数的方法（返回值可以是任意的类型,在函数里面必须有return关键字返回对应的类型）
-public int f3() {
-    System.out.println("有返回值无参数的方法");
-    return 2;
-}
+// 有返回值无参数的方法（返回值可以是任意的类型,在函数里面必须有return关键字返回对应的类型）public int f3() {    System.out.println("有返回值无参数的方法");    return 2;}
 ```
 
 **4.有返回值有参数的方法**
 
 ```java
-// 有返回值有参数的方法
-public int f4(int a, int b) {
-    return a * b;
-}
+// 有返回值有参数的方法public int f4(int a, int b) {    return a * b;}
 ```
 
 **5.return 在无返回值方法的特殊使用**
 
 ```java
-// return在无返回值方法的特殊使用
-public void f5(int a) {
-    if (a > 10) {
-        return;//表示结束所在方法 （f5方法）的执行,下方的输出语句不会执行
-    }
-    System.out.println(a);
-}
+// return在无返回值方法的特殊使用public void f5(int a) {    if (a > 10) {        return;//表示结束所在方法 （f5方法）的执行,下方的输出语句不会执行    }    System.out.println(a);}
 ```
 
 ### 在一个静态方法内调用一个非静态成员为什么是非法的?
@@ -743,7 +535,7 @@ public void f5(int a) {
 
 1. 在外部调用静态方法时，可以使用"类名.方法名"的方式，也可以使用"对象名.方法名"的方式。而实例方法只有后面这种方式。也就是说，**调用静态方法可以无需创建对象。**
 
-2. 静态方法在访问本类的成员时，只允许访问静态成员（即静态成员变量和静态方法），而不允许访问实例成员变量和实例方法；实例方法则无此限制。
+1. 静态方法在访问本类的成员时，只允许访问静态成员（即静态成员变量和静态方法），而不允许访问实例成员变量和实例方法；实例方法则无此限制。
 
 ### 为什么 Java 中只有值传递？
 
@@ -758,38 +550,18 @@ public void f5(int a) {
 > **example 1**
 
 ```java
-public static void main(String[] args) {
-    int num1 = 10;
-    int num2 = 20;
-
-    swap(num1, num2);
-
-    System.out.println("num1 = " + num1);
-    System.out.println("num2 = " + num2);
-}
-
-public static void swap(int a, int b) {
-    int temp = a;
-    a = b;
-    b = temp;
-
-    System.out.println("a = " + a);
-    System.out.println("b = " + b);
-}
+public static void main(String[] args) {    int num1 = 10;    int num2 = 20;    swap(num1, num2);    System.out.println("num1 = " + num1);    System.out.println("num2 = " + num2);}public static void swap(int a, int b) {    int temp = a;    a = b;    b = temp;    System.out.println("a = " + a);    System.out.println("b = " + b);}
 ```
 
 **结果：**
 
 ```
-a = 20
-b = 10
-num1 = 10
-num2 = 20
+a = 20b = 10num1 = 10num2 = 20
 ```
 
 **解析：**
 
-![example 1 ](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-27/22191348.jpg)
+![example 1 ](/Users/mbpzy/images/22191348.jpg)
 
 在 swap 方法中，a、b 的值进行交换，并不会影响到 num1、num2。因为，a、b 中的值，只是从 num1、num2 的复制过来的。也就是说，a、b 相当于 num1、num2 的副本，副本的内容无论怎么修改，都不会影响到原件本身。
 
@@ -798,29 +570,18 @@ num2 = 20
 > **example 2**
 
 ```java
-	public static void main(String[] args) {
-		int[] arr = { 1, 2, 3, 4, 5 };
-		System.out.println(arr[0]);
-		change(arr);
-		System.out.println(arr[0]);
-	}
-
-	public static void change(int[] array) {
-		// 将数组的第一个元素变为0
-		array[0] = 0;
-	}
+	public static void main(String[] args) {		int[] arr = { 1, 2, 3, 4, 5 };		System.out.println(arr[0]);		change(arr);		System.out.println(arr[0]);	}	public static void change(int[] array) {		// 将数组的第一个元素变为0		array[0] = 0;	}
 ```
 
 **结果：**
 
 ```
-1
-0
+10
 ```
 
 **解析：**
 
-![example 2](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-27/3825204.jpg)
+![example 2](/Users/mbpzy/images/3825204.jpg)
 
 array 被初始化 arr 的拷贝也就是一个对象的引用，也就是说 array 和 arr 指向的是同一个数组对象。 因此，外部对引用对象的改变会反映到所对应的对象上。
 
@@ -831,45 +592,24 @@ array 被初始化 arr 的拷贝也就是一个对象的引用，也就是说 ar
 > **example 3**
 
 ```java
-public class Test {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Student s1 = new Student("小张");
-		Student s2 = new Student("小李");
-		Test.swap(s1, s2);
-		System.out.println("s1:" + s1.getName());
-		System.out.println("s2:" + s2.getName());
-	}
-
-	public static void swap(Student x, Student y) {
-		Student temp = x;
-		x = y;
-		y = temp;
-		System.out.println("x:" + x.getName());
-		System.out.println("y:" + y.getName());
-	}
-}
+public class Test {	public static void main(String[] args) {		// TODO Auto-generated method stub		Student s1 = new Student("小张");		Student s2 = new Student("小李");		Test.swap(s1, s2);		System.out.println("s1:" + s1.getName());		System.out.println("s2:" + s2.getName());	}	public static void swap(Student x, Student y) {		Student temp = x;		x = y;		y = temp;		System.out.println("x:" + x.getName());		System.out.println("y:" + y.getName());	}}
 ```
 
 **结果：**
 
 ```
-x:小李
-y:小张
-s1:小张
-s2:小李
+x:小李y:小张s1:小张s2:小李
 ```
 
 **解析：**
 
 交换之前：
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-27/88729818.jpg)
+![](/Users/mbpzy/images/88729818.jpg)
 
 交换之后：
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-27/34384414.jpg)
+![](/Users/mbpzy/images/34384414.jpg)
 
 通过上面两张图可以很清晰的看出： **方法并没有改变存储在变量 s1 和 s2 中的对象引用。swap 方法的参数 x 和 y 被初始化为两个对象引用的拷贝，这个方法交换的是这两个拷贝**
 
@@ -900,7 +640,7 @@ Java 程序设计语言对对象采用的不是引用调用，实际上，对象
 
 下面是《Java 核心技术》对重载这个概念的介绍：
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/bg/desktopjava核心技术-重载.jpg)
+![](/Users/mbpzy/images/desktopjava%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E9%87%8D%E8%BD%BD.jpg)
 
 综上：重载就是同一个类中多个同名方法根据不同的传参来执行不同的逻辑处理。
 
@@ -909,8 +649,8 @@ Java 程序设计语言对对象采用的不是引用调用，实际上，对象
 重写发生在运行期，是子类对父类的允许访问的方法的实现过程进行重新编写。
 
 1. 返回值类型、方法名、参数列表必须相同，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类。
-2. 如果父类方法访问修饰符为 `private/final/static` 则子类就不能重写该方法，但是被 static 修饰的方法能够被再次声明。
-3. 构造方法无法被重写
+1. 如果父类方法访问修饰符为 `private/final/static` 则子类就不能重写该方法，但是被 static 修饰的方法能够被再次声明。
+1. 构造方法无法被重写
 
 综上：重写就是子类对父类方法的重新改造，外部样子不能改变，内部逻辑可以改变
 
@@ -934,39 +674,15 @@ Java 程序设计语言对对象采用的不是引用调用，实际上，对象
 ⭐️ 关于 **重写的返回值类**型 这里需要额外多说明一下，上面的表述不太清晰准确：如果方法的返回类型是 void 和基本数据类型，则返回值重写时不可修改。但是如果方法的返回值是引用类型，重写时是可以返回该引用类型的子类的。
 
 ```java
-public class Hero {
-    public String name() {
-        return "超级英雄";
-    }
-}
-public class SuperMan extends Hero{
-    @Override
-    public String name() {
-        return "超人";
-    }
-    public Hero hero() {
-        return new Hero();
-    }
-}
-
-public class SuperSuperMan extends SuperMan {
-    public String name() {
-        return "超级超级英雄";
-    }
-
-    @Override
-    public SuperMan hero() {
-        return new SuperMan();
-    }
-}
+public class Hero {    public String name() {        return "超级英雄";    }}public class SuperMan extends Hero{    @Override    public String name() {        return "超人";    }    public Hero hero() {        return new Hero();    }}public class SuperSuperMan extends SuperMan {    public String name() {        return "超级超级英雄";    }    @Override    public SuperMan hero() {        return new SuperMan();    }}
 ```
 
 ### 深拷贝 vs 浅拷贝
 
 1. **浅拷贝**：对基本数据类型进行值传递，对引用数据类型进行引用传递般的拷贝，此为浅拷贝。
-2. **深拷贝**：对基本数据类型进行值传递，对引用数据类型，创建一个新的对象，并复制其内容，此为深拷贝。
+1. **深拷贝**：对基本数据类型进行值传递，对引用数据类型，创建一个新的对象，并复制其内容，此为深拷贝。
 
-![deep and shallow copy](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/java-deep-and-shallow-copy.jpg)
+![deep and shallow copy](/Users/mbpzy/images/java-deep-and-shallow-copy.jpg)
 
 ## Java 面向对象
 
@@ -984,9 +700,9 @@ public class SuperSuperMan extends SuperMan {
 ### 成员变量与局部变量的区别有哪些？
 
 1. 从语法形式上看，成员变量是属于类的，而局部变量是在代码块或方法中定义的变量或是方法的参数；成员变量可以被 `public`,`private`,`static` 等修饰符所修饰，而局部变量不能被访问控制修饰符及 `static` 所修饰；但是，成员变量和局部变量都能被 `final` 所修饰。
-2. 从变量在内存中的存储方式来看,如果成员变量是使用 `static` 修饰的，那么这个成员变量是属于类的，如果没有使用 `static` 修饰，这个成员变量是属于实例的。而对象存在于堆内存，局部变量则存在于栈内存。
-3. 从变量在内存中的生存时间上看，成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动消失。
-4. 从变量是否有默认值来看，成员变量如果没有被赋初，则会自动以类型的默认值而赋值（一种情况例外:被 `final` 修饰的成员变量也必须显式地赋值），而局部变量则不会自动赋值。
+1. 从变量在内存中的存储方式来看,如果成员变量是使用 `static` 修饰的，那么这个成员变量是属于类的，如果没有使用 `static` 修饰，这个成员变量是属于实例的。而对象存在于堆内存，局部变量则存在于栈内存。
+1. 从变量在内存中的生存时间上看，成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动消失。
+1. 从变量是否有默认值来看，成员变量如果没有被赋初，则会自动以类型的默认值而赋值（一种情况例外:被 `final` 修饰的成员变量也必须显式地赋值），而局部变量则不会自动赋值。
 
 ### 创建一个对象用什么运算符?对象实体与对象引用有何不同?
 
@@ -1009,8 +725,8 @@ new 运算符，new 创建对象实例（对象实例在堆内存中），对象
 特点：
 
 1. 名字与类名相同。
-2. 没有返回值，但不能用 void 声明构造函数。
-3. 生成类的对象时自动执行，无需调用。
+1. 没有返回值，但不能用 void 声明构造函数。
+1. 生成类的对象时自动执行，无需调用。
 
 构造方法不能被 override（重写）,但是可以 overload（重载）,所以你可以看到一个类中有多个构造函数的情况。
 
@@ -1021,30 +737,7 @@ new 运算符，new 创建对象实例（对象实例在堆内存中），对象
 封装是指把一个对象的状态信息（也就是属性）隐藏在对象内部，不允许外部对象直接访问对象的内部信息。但是可以提供一些可以被外界访问的方法来操作属性。就好像我们看不到挂在墙上的空调的内部的零件信息（也就是属性），但是可以通过遥控器（方法）来控制空调。如果属性不想被外界访问，我们大可不必提供方法给外界访问。但是如果一个类没有提供给外界访问的方法，那么这个类也没有什么意义了。就好像如果没有空调遥控器，那么我们就无法操控空凋制冷，空调本身就没有意义了（当然现在还有很多其他方法 ，这里只是为了举例子）。
 
 ```java
-public class Student {
-    private int id;//id属性私有化
-    private String name;//name属性私有化
-
-    //获取id的方法
-    public int getId() {
-        return id;
-    }
-
-    //设置id的方法
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    //获取name的方法
-    public String getName() {
-        return name;
-    }
-
-    //设置name的方法
-    public void setName(String name) {
-        this.name = name;
-    }
-}
+public class Student {    private int id;//id属性私有化    private String name;//name属性私有化    //获取id的方法    public int getId() {        return id;    }    //设置id的方法    public void setId(int id) {        this.id = id;    }    //获取name的方法    public String getName() {        return name;    }    //设置name的方法    public void setName(String name) {        this.name = name;    }}
 ```
 
 #### 继承
@@ -1054,8 +747,8 @@ public class Student {
 **关于继承如下 3 点请记住：**
 
 1. 子类拥有父类对象所有的属性和方法（包括私有属性和私有方法），但是父类中的私有属性和方法子类是无法访问，**只是拥有**。
-2. 子类可以拥有自己属性和方法，即子类可以对父类进行扩展。
-3. 子类可以用自己的方式实现父类的方法。（以后介绍）。
+1. 子类可以拥有自己属性和方法，即子类可以对父类进行扩展。
+1. 子类可以用自己的方式实现父类的方法。（以后介绍）。
 
 #### 多态
 
@@ -1083,20 +776,7 @@ public class Student {
 `AbstractStringBuilder.java`
 
 ```java
-abstract class AbstractStringBuilder implements Appendable, CharSequence {
-    /**
-     * The value is used for character storage.
-     */
-    char[] value;
-
-    /**
-     * The count is the number of characters used.
-     */
-    int count;
-
-    AbstractStringBuilder(int capacity) {
-        value = new char[capacity];
-    }}
+abstract class AbstractStringBuilder implements Appendable, CharSequence {    /**     * The value is used for character storage.     */    char[] value;    /**     * The count is the number of characters used.     */    int count;    AbstractStringBuilder(int capacity) {        value = new char[capacity];    }}
 ```
 
 **线程安全性**
@@ -1110,34 +790,15 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
 **对于三者使用的总结：**
 
 1. 操作少量的数据: 适用 `String`
-2. 单线程操作字符串缓冲区下操作大量数据: 适用 `StringBuilder`
-3. 多线程操作字符串缓冲区下操作大量数据: 适用 `StringBuffer`
+1. 单线程操作字符串缓冲区下操作大量数据: 适用 `StringBuilder`
+1. 多线程操作字符串缓冲区下操作大量数据: 适用 `StringBuffer`
 
 ### Object 类的常见方法总结
 
 Object 类是一个特殊的类，是所有类的父类。它主要提供了以下 11 个方法：
 
 ```java
-public final native Class<?> getClass()//native方法，用于返回当前运行时对象的Class对象，使用了final关键字修饰，故不允许子类重写。
-
-public native int hashCode() //native方法，用于返回对象的哈希码，主要使用在哈希表中，比如JDK中的HashMap。
-public boolean equals(Object obj)//用于比较2个对象的内存地址是否相等，String类对该方法进行了重写用户比较字符串的值是否相等。
-
-protected native Object clone() throws CloneNotSupportedException//naitive方法，用于创建并返回当前对象的一份拷贝。一般情况下，对于任何对象 x，表达式 x.clone() != x 为true，x.clone().getClass() == x.getClass() 为true。Object本身没有实现Cloneable接口，所以不重写clone方法并且进行调用的话会发生CloneNotSupportedException异常。
-
-public String toString()//返回类的名字@实例的哈希码的16进制的字符串。建议Object所有的子类都重写这个方法。
-
-public final native void notify()//native方法，并且不能重写。唤醒一个在此对象监视器上等待的线程(监视器相当于就是锁的概念)。如果有多个线程在等待只会任意唤醒一个。
-
-public final native void notifyAll()//native方法，并且不能重写。跟notify一样，唯一的区别就是会唤醒在此对象监视器上等待的所有线程，而不是一个线程。
-
-public final native void wait(long timeout) throws InterruptedException//native方法，并且不能重写。暂停线程的执行。注意：sleep方法没有释放锁，而wait方法释放了锁 。timeout是等待时间。
-
-public final void wait(long timeout, int nanos) throws InterruptedException//多了nanos参数，这个参数表示额外时间（以毫微秒为单位，范围是 0-999999）。 所以超时的时间还需要加上nanos毫秒。
-
-public final void wait() throws InterruptedException//跟之前的2个wait方法一样，只不过该方法一直等待，没有超时时间这个概念
-
-protected void finalize() throws Throwable { }//实例被垃圾回收器回收的时候触发的操作
+public final native Class<?> getClass()//native方法，用于返回当前运行时对象的Class对象，使用了final关键字修饰，故不允许子类重写。public native int hashCode() //native方法，用于返回对象的哈希码，主要使用在哈希表中，比如JDK中的HashMap。public boolean equals(Object obj)//用于比较2个对象的内存地址是否相等，String类对该方法进行了重写用户比较字符串的值是否相等。protected native Object clone() throws CloneNotSupportedException//naitive方法，用于创建并返回当前对象的一份拷贝。一般情况下，对于任何对象 x，表达式 x.clone() != x 为true，x.clone().getClass() == x.getClass() 为true。Object本身没有实现Cloneable接口，所以不重写clone方法并且进行调用的话会发生CloneNotSupportedException异常。public String toString()//返回类的名字@实例的哈希码的16进制的字符串。建议Object所有的子类都重写这个方法。public final native void notify()//native方法，并且不能重写。唤醒一个在此对象监视器上等待的线程(监视器相当于就是锁的概念)。如果有多个线程在等待只会任意唤醒一个。public final native void notifyAll()//native方法，并且不能重写。跟notify一样，唯一的区别就是会唤醒在此对象监视器上等待的所有线程，而不是一个线程。public final native void wait(long timeout) throws InterruptedException//native方法，并且不能重写。暂停线程的执行。注意：sleep方法没有释放锁，而wait方法释放了锁 。timeout是等待时间。public final void wait(long timeout, int nanos) throws InterruptedException//多了nanos参数，这个参数表示额外时间（以毫微秒为单位，范围是 0-999999）。 所以超时的时间还需要加上nanos毫秒。public final void wait() throws InterruptedException//跟之前的2个wait方法一样，只不过该方法一直等待，没有超时时间这个概念protected void finalize() throws Throwable { }//实例被垃圾回收器回收的时候触发的操作
 ```
 
 
@@ -1167,25 +828,7 @@ protected void finalize() throws Throwable { }//实例被垃圾回收器回收�
 比如下面是通过 JDK 实现动态代理的示例代码，其中就使用了反射类 `Method` 来调用指定的方法。
 
 ```java
-public class DebugInvocationHandler implements InvocationHandler {
-    /**
-     * 代理类中的真实对象
-     */
-    private final Object target;
-
-    public DebugInvocationHandler(Object target) {
-        this.target = target;
-    }
-
-
-    public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
-        System.out.println("before method " + method.getName());
-        Object result = method.invoke(target, args);
-        System.out.println("after method " + method.getName());
-        return result;
-    }
-}
-
+public class DebugInvocationHandler implements InvocationHandler {    /**     * 代理类中的真实对象     */    private final Object target;    public DebugInvocationHandler(Object target) {        this.target = target;    }    public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {        System.out.println("before method " + method.getName());        Object result = method.invoke(target, args);        System.out.println("after method " + method.getName());        return result;    }}
 ```
 
 另外，像 Java 中的一大利器 **注解** 的实现也用到了反射。
@@ -1198,11 +841,11 @@ public class DebugInvocationHandler implements InvocationHandler {
 
 ### Java 异常类层次结构图
 
-![](https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/2020-12/Java%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%9B%BE.png)
+![](/Users/mbpzy/images/Java%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%9B%BE.png)
 
 <p style="font-size:13px;text-align:right">图片来自：https://simplesnippets.tech/exception-handling-in-java-part-1/</p>
 
-![](https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/2020-12/Java%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%9B%BE2.png)
+![](/Users/mbpzy/images/Java%E5%BC%82%E5%B8%B8%E7%B1%BB%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%9B%BE2.png)
 
 <p style="font-size:13px;text-align:right">图片来自：https://chercher.tech/java-programming/exceptions-java</p>
 
@@ -1217,7 +860,7 @@ public class DebugInvocationHandler implements InvocationHandler {
 
 Java 代码在编译过程中，如果受检查异常没有被 `catch`/`throw` 处理的话，就没办法通过编译 。比如下面这段 IO 操作的代码。
 
-![check-exception](https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/2020-12/check-exception.png)
+![check-exception](/Users/mbpzy/images/check-exception.png)
 
 除了`RuntimeException`及其子类以外，其他的`Exception`类及其子类都属于受检查异常 。常见的受检查异常有： IO 相关的异常、`ClassNotFoundException` 、`SQLException`...。
 
@@ -1243,25 +886,15 @@ Java 代码在编译过程中 ，我们即使不处理不受检查异常也可�
 **在以下 3 种特殊情况下，`finally` 块不会被执行：**
 
 2. 在 `try` 或 `finally`块中用了 `System.exit(int)`退出程序。但是，如果 `System.exit(int)` 在异常语句之后，`finally` 还是会被执行
-3. 程序所在的线程死亡。
-4. 关闭 CPU。
+2. 程序所在的线程死亡。
+2. 关闭 CPU。
 
 下面这部分内容来自 issue:<https://github.com/Snailclimb/JavaGuide/issues/190>。
 
 **注意：** 当 try 语句和 finally 语句中都有 return 语句时，在方法返回之前，finally 语句的内容将被执行，并且 finally 语句的返回值将会覆盖原始的返回值。如下：
 
 ```java
-public class Test {
-    public static int f(int value) {
-        try {
-            return value * value;
-        } finally {
-            if (value == 2) {
-                return 0;
-            }
-        }
-    }
-}
+public class Test {    public static int f(int value) {        try {            return value * value;        } finally {            if (value == 2) {                return 0;            }        }    }}
 ```
 
 如果调用 `f(2)`，返回值将是 0，因为 finally 语句的返回值覆盖了 try 语句块的返回值。
@@ -1269,7 +902,7 @@ public class Test {
 ### 使用 `try-with-resources` 来代替`try-catch-finally`
 
 1. **适用范围（资源的定义）：** 任何实现 `java.lang.AutoCloseable`或者 `java.io.Closeable` 的对象
-2. **关闭资源和 finally 块的执行顺序：** 在 `try-with-resources` 语句中，任何 catch 或 finally 块在声明的资源关闭后运行
+1. **关闭资源和 finally 块的执行顺序：** 在 `try-with-resources` 语句中，任何 catch 或 finally 块在声明的资源关闭后运行
 
 《Effecitve Java》中明确指出：
 
@@ -1278,32 +911,13 @@ public class Test {
 Java 中类似于`InputStream`、`OutputStream` 、`Scanner` 、`PrintWriter`等的资源都需要我们调用`close()`方法来手动关闭，一般情况下我们都是通过`try-catch-finally`语句来实现这个需求，如下：
 
 ```java
-        //读取文本文件的内容
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new File("D://read.txt"));
-            while (scanner.hasNext()) {
-                System.out.println(scanner.nextLine());
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
-        }
+        //读取文本文件的内容        Scanner scanner = null;        try {            scanner = new Scanner(new File("D://read.txt"));            while (scanner.hasNext()) {                System.out.println(scanner.nextLine());            }        } catch (FileNotFoundException e) {            e.printStackTrace();        } finally {            if (scanner != null) {                scanner.close();            }        }
 ```
 
 使用 Java 7 之后的 `try-with-resources` 语句改造上面的代码:
 
 ```java
-try (Scanner scanner = new Scanner(new File("test.txt"))) {
-    while (scanner.hasNext()) {
-        System.out.println(scanner.nextLine());
-    }
-} catch (FileNotFoundException fnfe) {
-    fnfe.printStackTrace();
-}
+try (Scanner scanner = new Scanner(new File("test.txt"))) {    while (scanner.hasNext()) {        System.out.println(scanner.nextLine());    }} catch (FileNotFoundException fnfe) {    fnfe.printStackTrace();}
 ```
 
 当然多个资源需要关闭的时候，使用 `try-with-resources` 实现起来也非常简单，如果你还是用`try-catch-finally`可能会带来很多问题。
@@ -1311,16 +925,7 @@ try (Scanner scanner = new Scanner(new File("test.txt"))) {
 通过使用分号分隔，可以在`try-with-resources`块中声明多个资源。
 
 ```java
-try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(new File("test.txt")));
-             BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("out.txt")))) {
-            int b;
-            while ((b = bin.read()) != -1) {
-                bout.write(b);
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(new File("test.txt")));             BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("out.txt")))) {            int b;            while ((b = bin.read()) != -1) {                bout.write(b);            }        }        catch (IOException e) {            e.printStackTrace();        }
 ```
 
 ## I/O 流
@@ -1342,7 +947,7 @@ try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(new F
 
 综上：**序列化的主要目的是通过网络传输对象或者说是将对象存储到文件系统、数据库、内存中。**
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2020-8/a478c74d-2c48-40ae-9374-87aacf05188c.png)
+![](/Users/mbpzy/images/a478c74d-2c48-40ae-9374-87aacf05188c.png)
 
 <p style="text-align:right;font-size:13px;color:gray">https://www.corejavaguru.com/java/serialization/interview-questions-1</p>
 
@@ -1353,6 +958,7 @@ try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(new F
 `transient` 关键字的作用是：阻止实例中那些用此关键字修饰的的变量序列化；当对象被反序列化时，被 `transient` 修饰的变量值不会被持久化和恢复。
 
 关于 `transient` 还有几点注意： 
+
 - `transient` 只能修饰变量，不能修饰类和方法。
 - `transient` 修饰的变量，在反序列化后变量值将会被置成类型的默认值。例如，如果是修饰 `int` 类型，那么反序列后结果就是 `0`。
 - `static` 变量因为不属于任何对象(Object)，所以无论有没有 `transient` 关键字修饰，均不会被序列化。
@@ -1362,16 +968,13 @@ try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(new F
 方法 1：通过 `Scanner`
 
 ```java
-Scanner input = new Scanner(System.in);
-String s  = input.nextLine();
-input.close();
+Scanner input = new Scanner(System.in);String s  = input.nextLine();input.close();
 ```
 
 方法 2：通过 `BufferedReader`
 
 ```java
-BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-String s = input.readLine();
+BufferedReader input = new BufferedReader(new InputStreamReader(System.in));String s = input.readLine();
 ```
 
 ### Java 中 IO 流分为几种?
@@ -1387,11 +990,11 @@ Java Io 流共涉及 40 多个类，这些类看上去很杂乱，但实际上�
 
 按操作方式分类结构图：
 
-![IO-操作方式分类](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/IO-操作方式分类.png)
+![IO-操作方式分类](/Users/mbpzy/images/IO-%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F%E5%88%86%E7%B1%BB.png)
 
 按操作对象分类结构图：
 
-![IO-操作对象分类](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/IO-操作对象分类.png)
+![IO-操作对象分类](/Users/mbpzy/images/IO-%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E5%88%86%E7%B1%BB.png)
 
 ### 既然有了字节流,为什么还要有字符流?
 

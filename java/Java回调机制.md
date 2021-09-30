@@ -12,13 +12,13 @@
 
 应用系统模块之间的调用，通常分为：同步调用，异步调用，回调。
 
-[![img](/Users/mbpzy/images/608ea4f53542a0b985a02aceb9b0b757.jpg-wh_600x-s_704523672.jpg)](https://s2.51cto.com/oss/202102/07/608ea4f53542a0b985a02aceb9b0b757.jpg-wh_600x-s_704523672.jpg)
+[![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/608ea4f53542a0b985a02aceb9b0b757.jpg-wh_600x-s_704523672.jpg)](https://s2.51cto.com/oss/202102/07/608ea4f53542a0b985a02aceb9b0b757.jpg-wh_600x-s_704523672.jpg)
 
 **同步调用**
 
 同步调用是最基本的调用方式。类A的a()方法调用类B的b()方法，类A的方法需要等到B类的方法执行完成才会继续执行。如果B的方法长时间阻塞，就会导致A类方法无法正常执行下去。
 
-[![img](/Users/mbpzy/images/ca4baf1164f0ce2d4b9b0d7df85cfb65.jpg-wh_600x-s_795989289.jpg)](https://s6.51cto.com/oss/202102/07/ca4baf1164f0ce2d4b9b0d7df85cfb65.jpg-wh_600x-s_795989289.jpg)
+[![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/ca4baf1164f0ce2d4b9b0d7df85cfb65.jpg-wh_600x-s_795989289.jpg)](https://s6.51cto.com/oss/202102/07/ca4baf1164f0ce2d4b9b0d7df85cfb65.jpg-wh_600x-s_795989289.jpg)
 
 **异步调用**
 
@@ -26,7 +26,7 @@
 
 异步通常分两种情况：第一，不需要调用结果，直接调用即可，比如发送消息通知;第二，需要异步调用结果，在Java中可使用Future+Callable实现。
 
-[![img](/Users/mbpzy/images/fab6556bab9a71e80ac493144411e1b9.jpg-wh_600x-s_3521158042.jpg)](https://s6.51cto.com/oss/202102/07/fab6556bab9a71e80ac493144411e1b9.jpg-wh_600x-s_3521158042.jpg)
+[![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/fab6556bab9a71e80ac493144411e1b9.jpg-wh_600x-s_3521158042.jpg)](https://s6.51cto.com/oss/202102/07/fab6556bab9a71e80ac493144411e1b9.jpg-wh_600x-s_3521158042.jpg)
 
 **回调**
 
