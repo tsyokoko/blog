@@ -102,4 +102,4 @@ AIO 也就是 NIO 2。Java 7 中引入了 NIO 的改进版 NIO 2,它是异步 IO
 
 最后，来一张图，简单总结一下 Java 中的 BIO、NIO、AIO。
 
-![img](/Users/mbpzy/images/1460000039420236.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1460000039420236.png)
