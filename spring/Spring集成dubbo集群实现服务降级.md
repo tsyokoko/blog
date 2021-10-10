@@ -1,5 +1,3 @@
-
-
 ## dubbo源码地址
 [https://github.com/alibaba/dubbo](https://github.com/alibaba/dubbo)
 - 进入下载dubbo-admin管理界面源码，进行maven打包 把打包war包部署到tomcat
@@ -57,7 +55,7 @@ clientPort=2181
  建立一个文本文件命名为myid，内容就为对应的zoo.cfg里server.后数字
 ## Linux环境下安装
 
- 
+
 - 安装:
 
 ```

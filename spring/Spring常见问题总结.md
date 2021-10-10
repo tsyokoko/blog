@@ -36,13 +36,13 @@ Spring 官网列出的 Spring 的 6 个特征:
 
 单独使用 `@Controller` 不加 `@ResponseBody`的话一般使用在要返回一个视图的情况，这种情况属于比较传统的Spring MVC 的应用，对应于前后端不分离的情况。
 
-![SpringMVC 传统工作流程](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/SpringMVC传统工作流程.png)
+![SpringMVC 传统工作流程](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/SpringMVC%E4%BC%A0%E7%BB%9F%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 **`@RestController` 返回JSON 或 XML 形式数据**
 
 但`@RestController`只返回对象，对象数据直接以 JSON 或 XML 形式写入 HTTP 响应(Response)中，这种情况属于 RESTful Web服务，这也是目前日常开发所接触的最常用的情况（前后端分离）。
 
-![SpringMVC+RestController](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/SpringMVCRestController.png)
+![SpringMVC+RestController](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/SpringMVCRestController.png)
 
 **`@Controller +@ResponseBody` 返回JSON 或 XML 形式数据**
 
@@ -50,7 +50,7 @@ Spring 官网列出的 Spring 的 6 个特征:
 
 > `@ResponseBody` 注解的作用是将 `Controller` 的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到HTTP 响应(Response)对象的 body 中，通常用来返回 JSON 或者 XML 数据，返回 JSON 数据的情况比较多。
 
-![Spring3.xMVC RESTfulWeb服务工作流程](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/Spring3.xMVCRESTfulWeb服务工作流程.png)
+![Spring3.xMVC RESTfulWeb服务工作流程](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/Spring3.xMVCRESTfulWeb%E6%9C%8D%E5%8A%A1%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 Reference:
 
@@ -73,7 +73,7 @@ Spring 时代我们一般通过 XML 文件来配置 Bean，后来开发人员觉
 
 **Spring IoC的初始化过程：** 
 
-![Spring IoC的初始化过程](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/SpringIOC初始化过程.png)
+![Spring IoC的初始化过程](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/SpringIOC%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B.png)
 
 IoC源码阅读
 
@@ -85,7 +85,7 @@ AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无�
 
 **Spring AOP就是基于动态代理的**，如果要代理的对象，实现了某个接口，那么Spring AOP会使用**JDK Proxy**，去创建代理对象，而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候Spring AOP会使用**Cglib**生成一个被代理对象的子类来作为代理，如下图所示：
 
-![SpringAOPProcess](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/SpringAOPProcess.jpg)
+![SpringAOPProcess](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/SpringAOPProcess.jpg)
 
 当然你也可以使用 AspectJ，Spring AOP 已经集成了AspectJ，AspectJ  应该算的上是 Java 生态系统中最完整的 AOP 框架了。
 
@@ -192,11 +192,11 @@ public OneService getService(status) {
 
 图示：
 
-![Spring Bean 生命周期](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-17/48376272.jpg)
+![Spring Bean 生命周期](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/48376272.jpg)
 
 与之比较类似的中文版本:
 
-![Spring Bean 生命周期](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-17/5496407.jpg)
+![Spring Bean 生命周期](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/5496407.jpg)
 
 ## 6. Spring MVC
 
@@ -213,12 +213,12 @@ MVC 是一种设计模式,Spring MVC 是一款很优秀的 MVC 框架。Spring M
 
 **Spring MVC 的简单原理图如下：**
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-10-11/60679444.jpg)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/60679444.jpg)
 
 ### 6.2 SpringMVC 工作原理了解吗?
 
 **原理如下图所示：**
-![SpringMVC运行原理](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-10-11/49790288.jpg)
+![SpringMVC运行原理](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/49790288.jpg)
 
 上图的一个笔误的小问题：Spring MVC 的入口函数也就是前端控制器 `DispatcherServlet` 的作用是接收请求，响应结果。
 
@@ -349,12 +349,3 @@ String transient4; // not persistent because of @Transient
 - <https://stackoverflow.com/questions/34172888/difference-between-bean-and-autowired>
 - <https://www.interviewbit.com/spring-interview-questions/>
 
-## 公众号
-
-如果大家想要实时关注我更新的文章以及分享的干货的话，可以关注我的公众号。
-
-**《Java面试突击》:** 由本文档衍生的专为面试而生的《Java面试突击》V2.0 PDF 版本[公众号](#公众号)后台回复 **"Java面试突击"** 即可免费领取！
-
-**Java工程师必备学习资源:** 一些Java工程师常用学习资源公众号后台回复关键字 **“1”** 即可免费无套路获取。 
-
-![公众号](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/javaguide1.jpg)
