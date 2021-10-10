@@ -2,7 +2,7 @@
 * ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring JDBC Template或直接使用JDBC。
 * 目前已经进入Apache孵化器。以4.x版本为新的发布开始
 
-![版本历史](http://wx1.sinaimg.cn/large/006b7Nxngy1g2f75yivtsj31cu0jy0w9.jpg)
+![版本历史](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/006b7Nxngy1g2f75yivtsj31cu0jy0w9.jpg)
 
 ## 如何单库分表集成
 * 首先集成一个不分库只分表的模式。创建一个springboot项目，这里使用Sharding-JDBC3.0版本。使用`sharding-jdbc-spring-boot-starter`集成

@@ -7,11 +7,11 @@
 
 首先看下生命周期图：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2018/0709/202510_bb8f4dca_1478371.png "3131012-249748bc2b49e857.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/202510_bb8f4dca_1478371.png "3131012-249748bc2b49e857.png")
 
 
 ### bean的五种作用域作
-![输入图片说明](https://images.gitee.com/uploads/images/2018/0709/125902_d205149e_1478371.png "微信图片_20180709125851.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/125902_d205149e_1478371.png "微信图片_20180709125851.png")
 
 五种作用域中，request、session和global session三种作用域仅在基于web的应用中使用（不必关心你所采用的是什么web应用框架），只能用在基于web的Spring ApplicationContext环境。
 
@@ -48,7 +48,7 @@
 ### 　global session作用域
 
 - 当一个bean的作用域为Global Session，表示在一个全局的HTTP Session中，一个bean定义对应一个实例。典型情况下，仅在使用portlet context的时候有效。该作用域仅在基于web的Spring ApplicationContext情形下有效。考虑下面bean定义：
-```
+```xml
 <bean id="user" class="com.foo.Preferences "scope="globalSession"/>
 ```
 - global session作用域类似于标准的HTTP Session作用域，不过仅仅在基于portlet的web应用中才有意义。Portlet规范定义了全局Session的概念，它被所有构成某个portlet web应用的各种不同的portlet所共享。在global session作用域中定义的bean被限定于全局portlet Session的生命周期范围内。
@@ -68,7 +68,7 @@
 ### springBean自定义初始化和销毁方法
 
  **springBoot方式** 
-```
+```java
 public class SpringLifeCycle {
     private final static Logger LOGGER = LoggerFactory.getLogger(LifeCycleConfig.class);
     public void start(){
@@ -116,7 +116,7 @@ public class DemoApplicationTests {
 ```
 
 
-```
+```java
 public class Person implements BeanNameAware, BeanFactoryAware,
         ApplicationContextAware, InitializingBean, DisposableBean {
 
@@ -194,7 +194,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
 }
 ```
  **测试类** 
-```
+```java
 public class MyBeanPostProcessor implements BeanPostProcessor {
 
     public Object postProcessBeforeInitialization(Object bean,
@@ -233,7 +233,7 @@ public static void main(String[] args) {
 
  **使用前面定义好的Person类和MyBeanPostProcessor类，以及ApplicationContext.xml文件，main函数实现如下：** 
 
-```
+```java
 public static void main(String[] args) {
         // TODO Auto-generated method stub
         System.out.println("开始初始化容器");  
@@ -247,5 +247,4 @@ public static void main(String[] args) {
         bf.destroySingletons();
     }
 ```
-
 

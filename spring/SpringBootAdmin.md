@@ -8,7 +8,7 @@ Spring Boot Admin应用监控
 - 新建一个springBoot2.x工程，将Spring Boot Admin Server启动器添加到pom.xml
 - 使用ide新建工程可以直接选择引入Spring Boot Admin
 
-```
+```xml
   <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
@@ -33,7 +33,7 @@ Spring Boot Admin应用监控
 ```
 ## 启动类添加如下注解
 
-```
+```java
 @SpringBootApplication
 @EnableAdminServer
 public class SpringbootAdminApplication {
@@ -45,7 +45,7 @@ public class SpringbootAdminApplication {
 ```
 ## 添加身份验证和授权
 
-```
+```java
 @Configuration
 public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
 
@@ -91,7 +91,7 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
 
 ## application.properties配置文件
 
-```
+```properties
 server.port=8088
 server.tomcat.uri-encoding=UTF-8
 server.tomcat.max-threads=1000
@@ -106,7 +106,7 @@ spring.boot.admin.ui.title=szq-Monitpring
 
 ```
 启动运行：http://localhost:8088/szq-monitoring/login 出现登录界面表示成功
-![输入图片说明](https://images.gitee.com/uploads/images/2018/1016/191838_0f809301_1478371.png "屏幕截图.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/191838_0f809301_1478371.png "屏幕截图.png")
 
 ## Spring Boot客户端配置监控
 - 客户端需要配置账户密码 不然无法注册到springBoot Admin
@@ -133,14 +133,14 @@ spring.boot.admin.client.instance.prefer-ip=true
 spring.boot.admin.client.instance.service-url=http://localhost:8081
 ```
 启动后：监控的服务端就会收到通知 刷新页面就可以看到监控的服务
-![输入图片说明](https://images.gitee.com/uploads/images/2018/1016/192538_bd25cd6d_1478371.png "屏幕截图.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/192538_bd25cd6d_1478371.png "屏幕截图.png")
 
-![输入图片说明](https://images.gitee.com/uploads/images/2018/1016/192619_d4dab5d0_1478371.png "屏幕截图.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/192619_d4dab5d0_1478371.png "屏幕截图.png")
 
 
 ## Spring Boot Admin Client配置选项
 
-```
+```properties
 spring.boot.admin.client.enabled    #启用S​​pring Boot Admin Client,默认值true
 spring.boot.admin.client.url  #逗号分隔Spring Boot Admin服务器的有序URL列表以进行注册
 spring.boot.admin.client.api-path #管理服务器上的注册端点的Http路径 默认值"instances"
@@ -155,12 +155,12 @@ http://codecentric.github.io/spring-boot-admin/current/#register-clients-via-spr
 
 打jar包放到linux服务器后台运行模式
 
-```
+```bash
 java -jar spring-boot01-1.0-SNAPSHOT.jar > log.file 2>&1 &
 ```
 
 ## 邮件通知配置
-```
+```properties
 spring.mail.host=smtp.qq.com
 spring.mail.username=870439570@qq.com
 #qq邮箱开通的授权码
@@ -175,7 +175,7 @@ spring.boot.admin.notify.mail.from=870439570@qq.com
 ```
  **QQ邮箱开通邮件客户端方法** 
 - 登录邮箱 进入设置-》账户-》开启IMAP/SMTP服务获取授权码
-![输入图片说明](https://images.gitee.com/uploads/images/2018/1017/200425_f77fa9d0_1478371.png "屏幕截图.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/200425_f77fa9d0_1478371.png "屏幕截图.png")
 
 重启项目后 如果注服务下线就会收到邮件通知
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/1017/200558_12933ddc_1478371.png "屏幕截图.png")

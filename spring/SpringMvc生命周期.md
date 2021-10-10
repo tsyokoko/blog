@@ -1,6 +1,6 @@
 ## SpringMVC运行流程及九大组件
 
-![输入图片说明](https://gitee.com/uploads/images/2018/0701/135845_cb034280_1478371.png "21D3022E-0B0C-4F3B-B5B0-C3CB55B4F744.png")
+![输入图片说明](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/135845_cb034280_1478371.png "21D3022E-0B0C-4F3B-B5B0-C3CB55B4F744.png")
 
 ## SpringMVC流程
 
@@ -40,7 +40,7 @@
 - 注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler
 - Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。
 - 由于Handler涉及到具体的用户业务请求 所以一般情况需要工程师根据业务需求开发Handler。
- 
+
 
  **5、视图解析器View resolver(不需要工程师开发),由框架提供** 
 -  作用：进行视图解析，根据逻辑视图名解析成真正的视图（view）
@@ -74,7 +74,7 @@
 
 ## 什么是MVC模式
 MVC的原理图：
-![MVC的原理图](https://images2015.cnblogs.com/blog/249993/201702/249993-20170207135959401-404841652.png "在这里输入图片标题")
+![MVC的原理图](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/249993-20170207135959401-404841652.png "在这里输入图片标题")
 
  **分析：** 
 - M-Model 模型（完成业务逻辑：有javaBean构成，service+dao+entity）

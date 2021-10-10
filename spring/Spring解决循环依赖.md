@@ -4,7 +4,7 @@
 
 有一个 A 对象，创建 A 的时候发现 A 对象依赖 B，然后去创建 B 对象的时候，又发现 B 对象依赖 C，然后去创建 C 对象的时候，又发现 C 对象依赖 A。这就是对象之间的循环依赖，而当程序执行这样的逻辑时，通常会陷入死循环，而这样的依赖关系在我们的程序中又是没办法避免的，所以如何去解决循环依赖带来的问题就需要我们去思考的。
 
-![img](/Users/mbpzy/images/v2-8adcdf4848cfab7d68450bd8be394259_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-8adcdf4848cfab7d68450bd8be394259_1440w.jpg)
 
 ### 2.**产生循环依赖问题的前提条件**
 
@@ -86,7 +86,7 @@ public class ObjectB {
 
 首先我们Spring初始化，然后三级缓存和标记缓存内容都还是空的
 
-![img](/Users/mbpzy/images/v2-888d5f9d61bdddfeb4a62fc7f47f0368_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-888d5f9d61bdddfeb4a62fc7f47f0368_1440w.jpg)
 
 **第一步：尝试从缓存获取A对象**
 
@@ -96,7 +96,7 @@ public class ObjectB {
 
 这一步会进行A对象的实例化，首先会在标记缓存里标记A正在创建中，然后调用构造方法进行实例化，再把自己放到一个ObjectFactory工厂里再保存到三级缓存。
 
-![img](/Users/mbpzy/images/v2-762386ba1a5010ff251582d9ff5d2f9d_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-762386ba1a5010ff251582d9ff5d2f9d_1440w.jpg)
 
 **第三步：A对象进行属性注入**
 
@@ -106,7 +106,7 @@ public class ObjectB {
 
 尝试创建对象B之前，容器还是会尝试先从缓存里面查找，然而没找到；这才真正决定进行B对象的实例化，首先会标记B正在创建中，然后调用构造方法进行实例化，再把自己放到一个ObjectFactory工厂对象里保存到三级缓存里。
 
-![img](/Users/mbpzy/images/v2-968e005076da20d9fabc1c83c2dd6e1c_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-968e005076da20d9fabc1c83c2dd6e1c_1440w.jpg)
 
 
 
@@ -116,7 +116,7 @@ public class ObjectB {
 
 然后再看A对象是否正处于创建中（这时知道了A正处于创建中），所以就继续从二级缓存中去获取B（二级缓存也没有），最后去三级缓存里面找（此时A对象存在于三级缓存），从三级缓存里获得一个ObjectFactory，然后调用ObjectFactory.getObject()方法得到了A对象。拿到A对象后 这里会把A对象从三级缓存移出，然后把A保存到二级缓存。
 
-![img](/Users/mbpzy/images/v2-28c946bcecc853cd80d0e95978aa335d_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-28c946bcecc853cd80d0e95978aa335d_1440w.jpg)
 
 
 
@@ -124,7 +124,7 @@ public class ObjectB {
 
 拿到A对象后，spring把A对象的引用赋值给B对象的属性，然后B就完成了创建，最后会把B对象从三级缓存移出，保存到一级缓存里去，同时也会移出创建中的标记。
 
-![img](/Users/mbpzy/images/v2-b31bf551ffe95976a2b6d5264ffef724_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-b31bf551ffe95976a2b6d5264ffef724_1440w.jpg)
 
 **第七步：完成A对象的属性注入**
 
@@ -132,7 +132,7 @@ public class ObjectB {
 
 拿到B对象后，然后把B对象引用赋值给A的属性,最后同样也会把A对象从二级缓存移出，保存到一级缓存里去，同时也会移出创建中的标记。
 
-![img](/Users/mbpzy/images/v2-73df2b553e24e9c2694313add6e6cbdb_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-73df2b553e24e9c2694313add6e6cbdb_1440w.jpg)
 
 
 
@@ -231,7 +231,7 @@ public class ObjectA {
 
 Spring运行结果，提示可能有循环依赖中断了程序
 
-![img](/Users/mbpzy/images/v2-55554b155673c77c7ee15d7fa489a9d0_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-55554b155673c77c7ee15d7fa489a9d0_1440w.jpg)
 
 
 
