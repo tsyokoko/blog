@@ -3,8 +3,8 @@
   - maven
     - [Maven核心知识点] (/maven/面试必备：Maven核心知识点梳理.md)
     - [如何解决依赖冲突与循环依赖] (/maven/一文理解Maven如何解决依赖冲突与循环依赖.md)
-    - [使用Maven的正确姿势-1] (/maven/Maven 基础（一） | 使用 Maven 的正确姿势.md)
-    - [使用Maven的正确姿势-2] (/maven/Maven 基础（二） | 解决依赖冲突的正确姿势.md)
+    - [使用Maven的正确姿势-1] (/maven/Maven%20基础（一）%20|%20使用%20Maven%20的正确姿势.md)
+    - [使用Maven的正确姿势-2] (/maven/Maven%20基础（二）%20|%20解决依赖冲突的正确姿势.md)
 - 查漏补缺
      - [面经查漏补缺](/查漏补缺/面经查漏补缺.md)
 - Java
@@ -68,6 +68,7 @@
      - [拿来即用的线程池最佳实践](/java/拿来即用的线程池最佳实践.md)
 - 服务器
   - nginx
+    - [Apache、Nginx、Tomcat的区别] (/nginx/Apache、Nginx、Tomcat 区别.md) 
 - 消息队列
   - [消息队列概论](/架构/message-queue.md) 
   - rabbitmq
