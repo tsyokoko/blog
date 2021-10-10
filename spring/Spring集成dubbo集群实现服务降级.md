@@ -2,7 +2,7 @@
 [https://github.com/alibaba/dubbo](https://github.com/alibaba/dubbo)
 - 进入下载dubbo-admin管理界面源码，进行maven打包 把打包war包部署到tomcat
 - 打包war包，进入dubbo-admin这个文件目录 运行命令：
-```
+```properties
 mvn package -Dmaven.skip.test=true
 ```
 - zookeeper 安装 windows环境
@@ -12,7 +12,7 @@ mvn package -Dmaven.skip.test=true
 - 把下载的zookeeper的文件解压到指定目录
 - 修改conf下增加一个zoo.cfg,可以用zoo_sample.cfg内内容替代
 安装完成进入bin目录启动zkServer.cmd命令
-```
+```properties
 # The number of milliseconds of each tick  心跳间隔 毫秒每次
 tickTime=2000
 # The number of ticks that the initial 
@@ -29,7 +29,7 @@ dataDir=F:\\zookeeper-3.3.6\\logs
 # the port at which the clients will connect  监听客户端连接的端口
 clientPort=2181
 ```
-## w系统伪集群安装
+## 系统伪集群安装
 
 
 - 在 一台机器上通过伪集群运行时可以修改 zkServer.cmd 文件在里面加入
@@ -69,7 +69,7 @@ cp conf/zoo_sample.cfg conf/zoo.cfg
 vi conf/zoo.cfg
 ```
 如果不需要集群，zoo.cfg 的内容如下 2：
-```
+```properties
 tickTime=2000
 initLimit=10
 syncLimit=5
@@ -77,7 +77,7 @@ dataDir=/home/dubbo/zookeeper-3.3.3/data
 clientPort=2181
 ```
 如果需要集群，zoo.cfg 的内容如下
-```
+```properties
 tickTime=2000
 initLimit=10
 syncLimit=5
@@ -87,12 +87,12 @@ server.1=10.20.153.10:2555:3555
 server.2=10.20.153.11:2555:3555
 ```
 并在 data 目录 4 下放置 myid 文件：
-```
+```bash
 mkdir data
 vi myid
 ```
 myid 指明自己的 id，对应上面 zoo.cfg 中 server. 后的数字，第一台的内容为 1，第二台的内容为2
-```
+```bash
 启动:
 
 ./bin/zkServer.sh start
@@ -151,7 +151,7 @@ Dubbo通过Token令牌防止用户绕过注册中心直连，然后在注册中�
 1. [Dubbo用户手册](http://dubbo.io/books/dubbo-user-book/)
 1. [Dubbo开发者指南](http://dubbo.io/books/dubbo-dev-book/)
 1. [Dubbo管理员手册](http://dubbo.io/books/dubbo-admin-book/)
-```
+```xml
 <dubbo:service/> 要暴露服务的接口 个服务可以用多个协议暴露，一个服务也可以注册到多个注册中心。
  <dubbo:service interface="com.qxw.service.UserService" ref="userService" />
 
@@ -193,7 +193,7 @@ Dubbo通过Token令牌防止用户绕过注册中心直连，然后在注册中�
 
 - 另外一种则是配置"return null"，可以很简单的忽略掉异常。
 
-```
+```xml
 在服务消费者放的增加mock就可以实现服务降级
 
  <dubbo:reference interface="com.qxw.service.UserService" id="userService" check="false" timeout="10000"  mock="return null" />
