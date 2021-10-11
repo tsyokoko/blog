@@ -21,6 +21,7 @@
      - [2020最新Java并发基础常见面试题总结-1](/java/2020最新Java并发基础常见面试题总结-1.md)
      - [2020最新Java并发进阶常见面试题总结-2](/java/2020最新Java并发进阶常见面试题总结-2.md)
      - [Java并发](/java/Java并发.md)
+     - [synchronized和volatile和reentranlock](/java/synchronized和volatile和reentranlock.md) 
      - [AQS原理以及AQS同步组件总结](/java/AQS原理以及AQS同步组件总结.md)
      - [Atomic原子类总结](/java/Atomic原子类总结.md)
      - [ConcurrentHashMap源码+底层数据结构分析](/java/ConcurrentHashMap源码+底层数据结构分析.md)
