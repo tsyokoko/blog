@@ -55,7 +55,7 @@
 
    Tomcat8在Linux系统中默认使用这种方式。 Tomcat7必须修改Connector配置来启动。 **配制项**：protocol=”org.apache.coyote.http11.Http11NioProtocol” **备注**：我们常用的Jetty，Mina，ZooKeeper等都是基于java nio实现.
 
-1. APR：即Apache Portable Runtime，从操作系统层面解决io阻塞问题。 **AIO方式**，**异步非阻塞IO**(Java NIO2又叫AIO) 主要与NIO的区别主要是操作系统的底层区别.可以做个比喻:比作快递，NIO就是网购后要自己到官网查下快递是否已经到了(可能是多次)，然后自己去取快递；AIO就是快递员送货上门了(不用关注快递进度)。
+1. **APR**：即Apache Portable Runtime，从操作系统层面解决io阻塞问题。 **AIO方式**，**异步非阻塞IO**(Java NIO2又叫AIO) 主要与NIO的区别主要是操作系统的底层区别.可以做个比喻:比作快递，NIO就是网购后要自己到官网查下快递是否已经到了(可能是多次)，然后自己去取快递；AIO就是快递员送货上门了(不用关注快递进度)。
 
    **配制项**：protocol=”org.apache.coyote.http11.Http11AprProtocol” **备注**：需在本地服务器安装APR库。Tomcat7或Tomcat8在Win7或以上的系统中启动默认使用这种方式。Linux如果安装了apr和native，Tomcat直接启动就支持apr。
 
