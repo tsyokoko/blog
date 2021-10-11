@@ -5,8 +5,6 @@
     - [Maven基础（二）](/maven/Maven%20基础（二）%20|%20解决依赖冲突的正确姿势.md)
     - [一文理解Maven如何解决依赖冲突与循环依赖](/maven/一文理解Maven如何解决依赖冲突与循环依赖.md)
     - [Maven核心知识点梳理](/maven/面试必备：Maven核心知识点梳理.md)
-- 查漏补缺
-     - [面经查漏补缺](/查漏补缺/面经查漏补缺.md)
 - Java
      - [JAD反编译](/java/JAD反编译tricks.md)
      - [JAVA核心技术36讲](/java/JAVA核心技术36讲.md)
@@ -70,6 +68,8 @@
 - 服务器
   - nginx
     - [Apache、Nginx、Tomcat的区别](/nginx/Apache、Nginx、Tomcat%20区别.md)
+  - tomcat
+    - [Tomcat面试题](/tomcat/Tomcat面试题.md) 
 - 消息队列
   - [消息队列概论](/架构/message-queue.md) 
   - rabbitmq
@@ -80,11 +80,14 @@
   - rocketmq
      - [RocketMQ-Questions](/rocketmq/RocketMQ-Questions.md)
      - [RocketMQ](/rocketmq/RocketMQ.md)
-- 数据存储
+- 数据中间件
   - mybatis
-     - [mybatis-interview](/mybatis/mybatis-interview.md)
+     - [mybatis-interview](/mybatis/mybatis-interview.md)  
   - sharding-jdbc
-     - [SpringBoot2集成Sharding-JDBC实现分库分表](/spring/SpringBoot2集成Sharding-JDBC实现分库分表.md)   
+     - [SpringBoot2集成Sharding-JDBC实现分库分表](/spring/SpringBoot2集成Sharding-JDBC实现分库分表.md) 
+- 数据存储
+  - 概论
+     - [各种数据库对比](/架构/各种数据库对比.md)
   - mysql
      - [InnoDB对MVCC的实现](/mysql/InnoDB对MVCC的实现.md)
      - [InnoDB中的页合并与分裂](/mysql/InnoDB中的页合并与分裂.md)
@@ -120,10 +123,11 @@
       - [redis面试](/redis/redis面试.md)
       - [redis集群以及应用场景](/redis/redis集群以及应用场景.md)
       - [如何做可靠的分布式锁，Redlock真的可行么](/redis/如何做可靠的分布式锁，Redlock真的可行么.md)
+  - mongodb
   - elasticsearch
       - [51道Elasticsearch面试题](/elasticsearch/51道Elasticsearch面试题.md)
 - 架构设计
-  - spring
+  - Spring框架
      - [Spring-Design-Patterns](/spring/Spring-Design-Patterns.md)
      - [Spring](/spring/Spring.md)
      - [SpringBean生命周期](/spring/SpringBean生命周期.md)
@@ -135,7 +139,7 @@
      - [Spring解决循环依赖](/spring/Spring解决循环依赖.md)
      - [aop](/spring/aop.md)
      - [idea调试Spring源码](/spring/idea调试Spring源码.md)
-  - 技术问题
+  - 实战框架问题
      - [8 张图读懂大型网站技术架构](/架构/8%20张图读懂大型网站技术架构.md)
      - [JWT优缺点分析以及常见问题解决方案](/架构/JWT优缺点分析以及常见问题解决方案.md)
      - [RESTfulAPI简明教程](/架构/RESTfulAPI简明教程.md)
@@ -143,16 +147,12 @@
      - [认证和授权](/架构/认证和授权.md)
      - [中间件有哪些](/架构/中间件.md)
      - [接口限流](/架构/接口限流.md)
-     - [分布式事务](/架构/分布式事务.md)
-     - [微服务架构](/架构/微服务架构.md)
-     - [各种数据库对比](/架构/各种数据库对比.md)
-     - [微服务面试题与答案](/架构/微服务面试题与答案.md)
      - [如何设计一个亿级网关](/架构/如何设计一个亿级网关.md)
      - [服务端如何防止重复支付](/架构/服务端如何防止重复支付.md)
      - [大厂的线上生产问题排查指南](/架构/大厂的线上生产问题排查指南.md)
      - [服务之间的调用为啥不直接用HTTP而用RPC](/架构/服务之间的调用为啥不直接用HTTP而用RPC.md)
      - [高并发下如何保证接口的幂等性](/架构/高并发下如何保证接口的幂等性.md)
-     - [海量大数据处理面试题和思路总结   ](/架构/海量大数据处理面试题和思路总结%20%20%20.md)
+     - [海量大数据处理面试题和思路总结](/架构/海量大数据处理面试题和思路总结%20%20%20.md)
      - [关于大型网站系统架构你不得不懂的10个问题](/架构/关于大型网站系统架构你不得不懂的10个问题.md)
      - [如何设计一个高可用系统要考虑哪些地方](/架构/如何设计一个高可用系统要考虑哪些地方.md)
 - 计算机基础
@@ -171,7 +171,7 @@
 - 设计模式
   - [设计模式](/设计模式/设计模式.md)
 - 容器
-  - 云原生
+  - 概论
     - [云原生简介](/架构/云原生.md)
   - docker
       - [docker笔记](/docker/docker笔记.md)
@@ -180,8 +180,11 @@
   - [BASE理论](/架构/BASE理论.md)
   - [分布式id生成方案总结](/架构/分布式id生成方案总结.md)
   - [分布式锁](/架构/分布式锁.md)
-  - [分布式事务](/架构/事务.md)
+  - [分布式事务](/架构/分布式事务.md)
 - 微服务
+  - 概论
+     - [微服务架构](/架构/微服务架构.md)
+     - [微服务面试题与答案](/架构/微服务面试题与答案.md)
   - springcloud
      - [spring-cloud](/架构/spring-cloud.md)
      - [SpringClodAlibaba](/spring/SpringClodAlibaba.md)
@@ -202,3 +205,5 @@
     - [Spring集成dubbo集群实现服务降级](/spring/Spring集成dubbo集群实现服务降级.md)
   - consul
       - [Consul实现服务注册中心](/consul/Consul实现服务注册中心.md)
+- 其他
+  - [面试题汇总](/查漏补缺/面经查漏补缺.md) 
