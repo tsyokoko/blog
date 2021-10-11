@@ -16,7 +16,7 @@
 
 
 
-![img](/Users/mbpzy/images/v2-b967ddbd1e9f24d4a8587ac3bfbad961_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-b967ddbd1e9f24d4a8587ac3bfbad961_1440w.jpg)
 
 
 
@@ -34,7 +34,7 @@ B+树和B-树有一些共同点，但是B+树也具备一些新的特征
 
 
 
-![img](/Users/mbpzy/images/v2-6eff523bb45a73ad7e6c346d526c8a42_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-6eff523bb45a73ad7e6c346d526c8a42_1440w.jpg)
 
 
 
@@ -42,7 +42,7 @@ B+树和B-树有一些共同点，但是B+树也具备一些新的特征
 
 
 
-![img](/Users/mbpzy/images/v2-95b2102f85db2137abdf4dd163ccbc69_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-95b2102f85db2137abdf4dd163ccbc69_1440w.jpg)
 
 
 
@@ -56,7 +56,7 @@ B+树和B-树有一些共同点，但是B+树也具备一些新的特征
 
 
 
-![img](/Users/mbpzy/images/v2-2c52fec0257eec24c9c7a04a559ba8fc_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-2c52fec0257eec24c9c7a04a559ba8fc_1440w.jpg)
 
 
 
@@ -72,7 +72,7 @@ B-树中的卫星数据（Satellite Information）：
 
 
 
-![img](/Users/mbpzy/images/v2-60e94826f7c0038447d36de2ed286698_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-60e94826f7c0038447d36de2ed286698_1440w.jpg)
 
 
 
@@ -84,7 +84,7 @@ B+树中的卫星数据（Satellite Information）：
 
 
 
-![img](/Users/mbpzy/images/v2-d60c33b5b77d4d2dfb12e317e154b93e_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-d60c33b5b77d4d2dfb12e317e154b93e_1440w.jpg)
 
 
 
@@ -102,7 +102,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-f8762e67fa8cfbb436237caa338345ae_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-f8762e67fa8cfbb436237caa338345ae_1440w.jpg)
 
 
 
@@ -112,7 +112,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-967b07063088446df06db8fbfa547a9b_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-967b07063088446df06db8fbfa547a9b_1440w.jpg)
 
 
 
@@ -120,7 +120,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-7bf3b4905fa76a2b6b65f69f2b947be1_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-7bf3b4905fa76a2b6b65f69f2b947be1_1440w.jpg)
 
 
 
@@ -134,7 +134,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-f8792d03a34df1346c7e8c3327f8701c_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-f8792d03a34df1346c7e8c3327f8701c_1440w.jpg)
 
 
 
@@ -142,7 +142,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-1d775415cc10fffbc5232f28a8ff5ab0_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-1d775415cc10fffbc5232f28a8ff5ab0_1440w.jpg)
 
 
 
@@ -150,7 +150,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-ed2d0936b377b754cab5e680d8c64d61_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-ed2d0936b377b754cab5e680d8c64d61_1440w.jpg)
 
 
 
@@ -158,7 +158,7 @@ B+树的好处主要体现在查询性能上。下面我们分别通过单行查
 
 
 
-![img](/Users/mbpzy/images/v2-857b5d1574dbc0aea61feed0b69e5f79_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-857b5d1574dbc0aea61feed0b69e5f79_1440w.jpg)
 
 
 
@@ -172,7 +172,7 @@ B+树的范围查找过程：
 
 
 
-![img](/Users/mbpzy/images/v2-de20ae7c5d832eee69879682c6b1596f_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-de20ae7c5d832eee69879682c6b1596f_1440w.jpg)
 
 
 
@@ -180,7 +180,7 @@ B+树的范围查找过程：
 
 
 
-![img](/Users/mbpzy/images/v2-2bfce5003df9f8f7a41f8deb9419d663_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-2bfce5003df9f8f7a41f8deb9419d663_1440w.jpg)
 
 
 
@@ -188,7 +188,7 @@ B+树的范围查找过程：
 
 
 
-![img](/Users/mbpzy/images/v2-bdcea290866517d7a9846e6960dc56c7_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-bdcea290866517d7a9846e6960dc56c7_1440w.jpg)
 
 
 
@@ -238,7 +238,7 @@ LSM Tree（Log-Structured Merge Tree）日志结构合并树，核心思路就�
 
 
 
-![img](/Users/mbpzy/images/v2-0c514efb40fbbc4575c8b9568de1c3fb_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-0c514efb40fbbc4575c8b9568de1c3fb_1440w.jpg)
 
 
 
@@ -266,7 +266,7 @@ LSM树原理把一棵大树拆分成N棵小树，它首先写入内存中，随�
 
 
 
-![img](/Users/mbpzy/images/v2-6467430d6c927b3f0073b3efc625b768_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-6467430d6c927b3f0073b3efc625b768_1440w.jpg)
 
 
 
@@ -280,7 +280,7 @@ MemStore上的树达到一定大小之后，需要flush到HRegion磁盘中（一
 
 
 
-![img](/Users/mbpzy/images/v2-b58bce80eb1a280fe0bfb7e5c900302e_1440w.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/v2-b58bce80eb1a280fe0bfb7e5c900302e_1440w.jpg)
 
 
 
