@@ -68,9 +68,9 @@ monitorenter指令是在编译后插入到同步代码块的开始位置，而mo
 
 **synchronized用的锁是存在Java对象头里的，Java对象头里的MarkWord里默认存储对象的HashCode、分代年龄和锁标记位。**
 
-<img src="../images/image-20210909114238260.png" alt="image-20210909114238260" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909114238260.png" alt="image-20210909114238260" style="zoom:50%;" />
 
-<img src="../images/image-20210909214724413.png" alt="image-20210909214724413" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909214724413.png" alt="image-20210909214724413" style="zoom:50%;" />
 
 #### 2.2.2　锁的升级与对比
 
@@ -128,11 +128,11 @@ monitorenter指令是在编译后插入到同步代码块的开始位置，而mo
 
 重量级锁是指当有一个线程获取锁之后，其余所有等待获取该锁的线程都会处于阻塞状态。
 
-![image-20210909114610360](../images/image-20210909114610360.png)
+![image-20210909114610360](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909114610360.png)
 
 ### 2.3　原子操作的实现原理
 
-<img src="../images/image-20210909114804365.png" alt="image-20210909114804365" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909114804365.png" alt="image-20210909114804365" style="zoom:50%;" />
 
 32位IA-32处理器使用基于对缓存加锁或总线加锁的方式来实现多处理器之间的原子操作。首先处理器会自动保证基本的内存操作的原子性。处理器保证从系统内存中读取或者写入一个字节是原子的，意思是当一个处理器读取一个字节时，其他处理器不能访问这个字节 的内存地址。
 
@@ -182,9 +182,9 @@ Pentium 6和最新的处理器能自动保证单处理器对同一个缓存行�
 
 Java的并发采用的是共享内存模型，Java线程之间的通信总是隐式进行，整个通信过程对程序员完全透明。
 
-<img src="../images/image-20210909122926273.png" alt="image-20210909122926273" style="zoom: 25%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909122926273.png"/>
 
-<img src="../images/image-20210909122950605.png" alt="image-20210909122950605" style="zoom: 25%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909122950605.png"/>
 
 从整体来看，这两个步骤实质上是线程A在向线程B发送消息，而且这个通信过程必须要 经过主内存。JMM通过控制主内存与每个线程的本地内存之间的交互，来为Java程序员提供 内存可见性保证。
 
@@ -192,7 +192,7 @@ Java的并发采用的是共享内存模型，Java线程之间的通信总是隐
 
 从Java源代码到最终实际执行的指令序列，会分别经历下面3种重排序，如图3-3所示。
 
-![image-20210909123557461](../images/image-20210909123557461.png)
+![image-20210909123557461](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909123557461.png)
 
 上述的1属于编译器重排序，2和3属于处理器重排序。这些重排序可能会导致多线程程序 出现内存可见性问题。对于编译器，JMM的编译器重排序规则会禁止特定类型的编译器重排序（不是所有的编译器重排序都要禁止）。对于处理器重排序，JMM的处理器重排序规则会要 求Java编译器在生成指令序列时，插入特定类型的内存屏障指令，通过内存屏障指令来禁止特定类型的处理器重排序。
 
@@ -200,7 +200,7 @@ JMM属于语言级的内存模型，它确保在不同的编译器和不同的�
 
 为了保证内存可见性，Java编译器在生成指令序列的适当位置会插入内存屏障指令来禁 止特定类型的处理器重排序。JMM把内存屏障指令分为4类。
 
-![image-20210909123832419](../images/image-20210909123832419.png)
+![image-20210909123832419](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909123832419.png)
 
 StoreLoad Barriers是一个“全能型”的屏障，它同时具有其他3个屏障的效果。
 
@@ -208,7 +208,7 @@ StoreLoad Barriers是一个“全能型”的屏障，它同时具有其他3个�
 
 从JDK 5开始，Java使用新的JSR-133内存模型。JSR-133使用happens-before的概念来阐述操作之间的内存可见性。在JMM中，如果一 个操作执行的结果需要对另一个操作可见，那么这两个操作之间必须要存在happens-before关 系。这里提到的两个操作既可以是在一个线程之内，也可以是在不同线程之间。
 
-<img src="../images/image-20210909124040832.png" alt="image-20210909124040832" style="zoom:25%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909124040832.png"/>
 
 如图3-5所示，一个happens-before规则对应于一个或多个编译器和处理器重排序规则。对 于Java程序员来说，happens-before规则简单易懂，它避免Java程序员为了理解JMM提供的内存 可见性保证而去学习复杂的重排序规则以及这些规则的具体实现方法。
 
@@ -220,7 +220,7 @@ StoreLoad Barriers是一个“全能型”的屏障，它同时具有其他3个�
 
 如果两个操作访问同一个变量，且这两个操作中有一个为写操作，此时这两个操作之间 就存在数据依赖性。数据依赖分为下列3种类型，如表3-4所示。
 
-<img src="../images/image-20210909124150250.png" alt="image-20210909124150250" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909124150250.png" alt="image-20210909124150250" style="zoom:50%;" />
 
 上面3种情况，只要重排序两个操作的执行顺序，程序的执行结果就会被改变。 前面提到过，编译器和处理器可能会对操作做重排序。编译器和处理器在重排序时，会遵 守数据依赖性，编译器和处理器不会改变存在数据依赖关系的两个操作的执行顺序。 这里所说的数据依赖性仅针对单个处理器中执行的指令序列和单个线程中执行的操作， 不同处理器之间和不同线程之间的数据依赖性不被编译器和处理器考虑。
 
@@ -278,7 +278,7 @@ volatile读的内存语义如下：当读一个volatile变量时，JMM会把该�
 
 在每个volatile读操作的前面插入一个LoadLoad屏障，后面插入一个LoadStore屏障。
 
-<img src="../images/image-20210909125826880.png" alt="image-20210909125826880" style="zoom:25%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909125826880.png"/>
 
 ### 3.5　锁的内存语义
 
@@ -296,7 +296,7 @@ volatile读的内存语义如下：当读一个volatile变量时，JMM会把该�
 
  ReentrantLock的实现依赖于Java同步器框架AbstractQueuedSynchronizer（本文简称之为 AQS）。AQS使用一个整型的volatile变量（命名为state）来维护同步状态。
 
-<img src="../images/image-20210909132128989.png" alt="image-20210909132128989" style="zoom: 33%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909132128989.png"  />
 
 ReentrantLock分为公平锁和非公平锁，我们首先分析公平锁。
 
@@ -418,7 +418,7 @@ protected final boolean compareAndSetState(int expect, int update) {
 
  AQS，非阻塞数据结构和原子变量类（java.util.concurrent.atomic包中的类），这些concurrent 包中的基础类都是使用这种模式来实现的，而concurrent包中的高层类又是依赖于这些基础类来实现的。从整体来看，concurrent包的实现示意图如3-28所示。
 
-<img src="../images/image-20210909132635649.png" alt="image-20210909132635649" style="zoom:25%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909132635649.png" />
 
 ### 3.6　final域的内存语义
 
@@ -470,19 +470,19 @@ as-if-serial语义和happens-before这么做的目的，都是为了在不改变
 
 在Java程序中，有时候可能需要推迟一些高开销的对象初始化操作，并且只有在使用这些 对象时才进行初始化。此时，程序员可能会采用延迟初始化。但要正确实现线程安全的延迟初 始化需要一些技巧，否则很容易出现问题。比如，下面是非线程安全的延迟初始化对象的示例代码。
 
-<img src="../images/image-20210909140859494.png" alt="image-20210909140859494" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909140859494.png" />
 
 在UnsafeLazyInitialization类中，假设A线程执行代码1的同时，B线程执行代码2。此时线程A可能会看到instance引用的对象还没有完成初始化。
 
 对于UnsafeLazyInitialization类，我们可以对getInstance()方法做同步处理来实现线程安全的延迟初始化。示例代码如下。
 
-<img src="../images/image-20210909141058886.png" alt="image-20210909141058886" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141058886.png"/>
 
 由于对getInstance()方法做了同步处理，synchronized将导致性能开销。如果getInstance()方 法被多个线程频繁的调用，将会导致程序执行性能的下降。反之，如果getInstance()方法不会被 多个线程频繁的调用，那么这个延迟初始化方案将能提供令人满意的性能。
 
 在早期的JVM中，synchronized（甚至是无竞争的synchronized）存在巨大的性能开销。因此， 人们想出了一个“聪明”的技巧：双重检查锁定（Double-Checked Locking）。人们想通过双重检查 锁定来降低同步的开销。下面是使用双重检查锁定来实现延迟初始化的示例代码。
 
-<img src="../images/image-20210909141146231.png" alt="image-20210909141146231" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141146231.png" />
 
 如上面代码所示，如果第一次检查instance不为null，那么就不需要执行下面的加锁和初始 化操作。因此，可以大幅降低synchronized带来的性能开销。上面代码表面上看起来，似乎两全 其美。
 
@@ -494,11 +494,11 @@ as-if-serial语义和happens-before这么做的目的，都是为了在不改变
 
 前面的双重检查锁定示例代码的第7行（instance=new Singleton();）创建了一个对象。这一 行代码可以分解为如下的3行伪代码。
 
-<img src="../images/image-20210909141227479.png" alt="image-20210909141227479" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141227479.png" />
 
-上面3行伪代码中的2和3之间，可能会被重排序（在一些JIT编译器上，这种重排序是真实 发生的，详情见参考文献1的“Out-of-order writes”部分）。2和3之间重排序之后的执行时序如 下。
+上面3行伪代码中的2和3之间，可能会被重排序（在一些JIT编译器上，这种重排序是真实 发生的，详情见参考文献1的“Out-of-order writes”部分）。2和3之间重排序之后的执行时序如下。
 
-<img src="../images/image-20210909141253401.png" alt="image-20210909141253401" style="zoom:50%;" />
+![image-20210909141253401](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141253401.png)
 
 所有 线程在执行Java程序时必须要遵守intra-thread semantics。intra-thread semantics保证重排序不会 改变单线程内的程序执行结果。换句话说，intra-thread semantics允许那些在单线程内，不会改 变单线程程序执行结果的重排序。上面3行伪代码的2和3之间虽然被重排序了，但这个重排序 并不会违反intra-thread semantics。这个重排序在没有改变单线程程序执行结果的前提下，可以 提高程序的执行性能。
 
@@ -514,7 +514,7 @@ as-if-serial语义和happens-before这么做的目的，都是为了在不改变
 
 对于前面的基于双重检查锁定来实现延迟初始化的方案（指DoubleCheckedLocking示例代码），只需要做一点小的修改（把instance声明为volatile型），就可以实现线程安全的延迟初始化。请看下面的示例代码。
 
-<img src="../images/image-20210909141627975.png" alt="image-20210909141627975" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141627975.png"  />
 
 #### 3.8.4　基于类初始化的解决方案
 
@@ -522,11 +522,11 @@ JVM在类的初始化阶段（即在Class被加载后，且被线程使用之前
 
 基于这个特性，可以实现另一种线程安全的延迟初始化方案。
 
-<img src="../images/image-20210909141805634.png" alt="image-20210909141805634" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141805634.png"  />
 
 假设两个线程并发执行getInstance()方法，下面是执行的示意图，如图3-40所示。
 
-<img src="../images/image-20210909141829912.png" alt="image-20210909141829912" style="zoom:25%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909141829912.png" />
 
 这个方案的实质是：允许3.8.2节中的3行伪代码中的2和3重排序，但不允许非构造线程（这 里指线程B）“看到”这个重排序。
 
@@ -584,11 +584,11 @@ Java语言规范规定，对于每一个类或接口C，都有一个唯一的初
 
 使用JMX来查看一个普通的Java程序包含哪些线程.
 
-<img src="../images/image-20210909143553247.png" alt="image-20210909143553247" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909143553247.png" />
 
 输出内容如下：
 
-<img src="../images/image-20210909143703950.png" alt="image-20210909143703950" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909143703950.png" />
 
 可以看到，一个Java程序的运行不仅仅是main()方法的运行，而是main线程和多个其他线 程的同时运行。
 
@@ -608,7 +608,7 @@ Java语言规范规定，对于每一个类或接口C，都有一个唯一的初
 
 ### 5.1　Lock接口
 
-<img src="../images/image-20210909144922492.png" alt="image-20210909144922492" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909144922492.png" />
 
 ### 5.2　队列同步器
 
@@ -642,7 +642,7 @@ AQS的主要使用方式是继承，子类通过继承同步器并实现它的�
 
 之前提到锁（如Mutex和ReentrantLock）基本都是排他锁，这些锁在同一时刻只允许一个线程进行访问，而读写锁在同一时刻可以允许多个读线程访问，但是在写线程访问时，所有的读 线程和其他写线程均被阻塞。读写锁维护了一对锁，一个读锁和一个写锁，通过分离读锁和写 锁，使得并发性相比一般的排他锁有了很大提升。
 
-<img src="../images/image-20210909150041398.png" alt="image-20210909150041398" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909150041398.png" />
 
 ##### 1.读写状态的设计
 
@@ -660,13 +660,13 @@ AQS的主要使用方式是继承，子类通过继承同步器并实现它的�
 
 LockSupport定义了一组以park开头的方法用来阻塞当前线程，以及unpark(Thread thread) 方法来唤醒一个被阻塞的线程。
 
-<img src="../images/image-20210909150153182.png" alt="image-20210909150153182" style="zoom:50%;" />
+![image-20211011154934093](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20211011154934093.png)
 
 ### 5.6　Condition接口
 
-任意一个Java对象，都拥有一组监视器方法（定义在java.lang.Object上），主要包括wait()、 wait(long timeout)、notify()以及notifyAll()方法，这些方法与synchronized同步关键字配合，可以 实现等待/通知模式。Condition接口也提供了类似Object的监视器方法，与Lock配合可以实现等 待/通知模式，但是这两者在使用方式以及功能特性上还是有差别的。
+任意一个Java对象，都拥有一组监视器方法（定义在java.lang.Object上），主要包括wait()、 wait(long timeout)、notify()以及notifyAll()方法，这些方法与synchronized同步关键字配合，可以 实现等待/通知模式。Condition接口也提供了类似Object的监视器方法，与Lock配合可以实现等 待/通知模式，但是这两者在使用方式以及功能特性上还是有差别的。 
 
-<img src="../images/image-20210909150306528.png" alt="image-20210909150306528" style="zoom:50%;" />
+<img src="https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909150306528.png" alt="image-20210909150306528" style="zoom:50%;" />
 
 Condition定义了等待/通知两种类型的方法，当前线程调用这些方法时，需要提前获取到 Condition对象关联的锁。Condition对象是由Lock对象（调用Lock对象的newCondition()方法）创 建出来的，换句话说，Condition是依赖Lock对象的。
 
@@ -674,9 +674,9 @@ Condition定义了等待/通知两种类型的方法，当前线程调用这些�
 
 一个Condition包含一个等待队列，Condition拥有首节点（firstWaiter）和尾节点 （lastWaiter）。当前线程调用Condition.await()方法，将会以当前线程构造节点，并将节点从尾部 加入等待队列，等待队列的基本结构如图5-9所示。
 
-<img src="../images/image-20210909150552225.png" alt="image-20210909150552225" style="zoom:50%;" />
+![image-20210909150552225](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/image-20210909150552225.png)
 
-如图所示，Condition拥有首尾节点的引用，而新增节点只需要将原有的尾节点nextWaiter 指向它，并且更新尾节点即可。上述节点引用更新的过程并没有使用CAS保证，原因在于调用 await()方法的线程必定是获取了锁的线程，也就是说该过程是由锁来保证线程安全的。
+如图所示，Condition拥有首尾节点的引用，而新增节点只需要将原有的尾节点nextWaiter 指向它，并且更新尾节点即可。上述节点引用更新的过程并没有使用CAS保证，原因在于调用 await()方法的线程必定是获取了锁的线程，也就是说该过程是由锁来保证线程安全的。 
 
 调用Condition的await()方法（或者以await开头的方法），会使当前线程进入等待队列并释 放锁，同时线程状态变为等待状态。当从await()方法返回时，当前线程一定获取了Condition相 关联的锁。 如果从队列（同步队列和等待队列）的角度看await()方法，当调用await()方法时，相当于同 步队列的首节点（获取了锁的节点）移动到Condition的等待队列中。
 
@@ -745,7 +745,7 @@ Java中的线程池是运用场景最多的并发框架，几乎所有需要异�
 
 第三：提高线程的可管理性。线程是稀缺资源，如果无限制地创建，不仅会消耗系统资源， 还会降低系统的稳定性，使用线程池可以进行统一分配、调优和监控。但是，要做到合理利用 线程池，必须对其实现原理了如指掌。
 
-<img src="../images/image-20210909195111181.png" alt="image-20210909195111181" style="zoom:50%;" />
+<img src="/Users/mbpzy/images/image-20210909195111181.png" alt="image-20210909195111181" style="zoom:50%;" />
 
 创建一个线程池时需要输入几个参数，如下。
 
