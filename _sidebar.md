@@ -109,17 +109,9 @@
      - [关于数据库存储时间的一点思考](/mysql/关于数据库存储时间的一点思考.md)
      - [阿里巴巴开发手册数据库部分的一些最佳实践](/mysql/阿里巴巴开发手册数据库部分的一些最佳实践.md)
   - redis
-      - [3种常用的缓存读写策略](/redis/3种常用的缓存读写策略.md)
-      - [Redis01](/redis/Redis01.md)
-      - [Redis02](/redis/Redis02.md)
-      - [Redis持久化](/redis/Redis持久化.md)
-      - [Redis和多路复用模型](/redis/Redis和多路复用模型.md)
-      - [Redlock分布式锁](/redis/Redlock分布式锁.md)
-      - [redis-all](/redis/redis-all.md)
-      - [redission实现分布式锁原理](/redis/redission实现分布式锁原理.md)
-      - [redis面试](/redis/redis面试.md)
-      - [redis集群以及应用场景](/redis/redis集群以及应用场景.md)
-      - [如何做可靠的分布式锁，Redlock真的可行么](/redis/如何做可靠的分布式锁，Redlock真的可行么.md)
+      - [redis-基础](/redis/redis-基础.md)
+      - [redis-进阶](/redis/redis-进阶.md)
+      
   - mongodb
   - elasticsearch
       - [51道Elasticsearch面试题](/elasticsearch/51道Elasticsearch面试题.md)
