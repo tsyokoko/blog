@@ -1,5 +1,3 @@
-点击关注[公众号](#公众号)及时获取笔主最新更新文章，并可免费领取本文档配套的《Java 面试突击》以及 Java 工程师必备学习资源。
-
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -81,7 +79,7 @@ Memcached 是分布式缓存最开始兴起的那会，比较常用的。后来�
 
 作为暖男一号，我给大家画了一个草图。
 
-![正常缓存处理流程](file:///Users/mbpzy/images/%E7%BC%93%E5%AD%98%E7%9A%84%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png?lastModify=1631508406)
+![正常缓存处理流程](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E7%BC%93%E5%AD%98%E7%9A%84%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
 简单来说就是:
 
@@ -96,7 +94,7 @@ Memcached 是分布式缓存最开始兴起的那会，比较常用的。后来�
 
 下面我们主要从“高性能”和“高并发”这两点来看待这个问题。
 
-![img](file:///Users/mbpzy/images/%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98%E4%B9%8B%E5%90%8E.png?lastModify=1631508406)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98%E4%B9%8B%E5%90%8E.png)
 
 **高性能** ：
 
@@ -120,7 +118,7 @@ Memcached 是分布式缓存最开始兴起的那会，比较常用的。后来�
 
 你可以自己本机安装 redis 或者通过 redis 官网提供的[在线 redis 环境](https://try.redis.io/)。
 
-![try-redis](file:///Users/mbpzy/images/try-redis.png?lastModify=1631508406)
+![try-redis](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/try-redis.png)
 
 #### 6.1. string
 
@@ -219,7 +217,7 @@ OK
 
 我专门花了一个图方便小伙伴们来理解：
 
-![redis list](file:///Users/mbpzy/images/redis-list.png?lastModify=1631508406)
+![redis list](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/redis-list.png)
 
 **通过 `lrange` 查看对应下标范围的列表元素：**
 
@@ -500,7 +498,7 @@ geodist 用于返回两个给定位置之间的距离。
 
 一种数据结构，是由一串很长的二进制向量组成，可以将其看成一个二进制数组。既然是二进制，那么里面存放的不是0，就是1，但是初始默认值都是0。他的主要作用是：**判断一个元素是否在某个集合中**。比如说，我想判断20亿的号码中是否存在某个号码，如果直接插DB，那么数据量太大时间会很慢；如果将20亿数据放到 缓存中，缓存也装不下。这个时候用 布隆过滤器 最合适了，布隆过滤器的原理是：
 
-1. 添加元素 当要向布隆过滤器中添加一个元素key时，我们通过多个hash函数，算出一个值，然后将这个值所在的方格置为1。 ![img](file:///Users/mbpzy/images/1460000040102335.png?lastModify=1631508406)
+1. 添加元素 当要向布隆过滤器中添加一个元素key时，我们通过多个hash函数，算出一个值，然后将这个值所在的方格置为1。 ![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1460000040102335.png)
 1. 判断元素是否存在： 判断元素是否存在，是先将元素经过多个hash函数计算，计算到多个下标值，然后判断这些下标对应的元素值是否都为1，如果存在不是 1 的，那么元素肯定不在集合中；如果都是 1，那么元素大概率在集合中，并不能百分之百肯定元素存在集合中，因为多个不同的数据通过hash函数算出来的结果是会有重复的，所以会存在某个位置是别的数据通过hash函数置为的1。 总的来说：**布隆过滤器可以判断某个数据一定不存在，但是无法判断一定存在。**
 1. 布隆过滤器的优缺点：
 1. 优点：优点很明显，二进制组成的数组，占用内存极少，并且插入和查询速度都足够快。
@@ -615,7 +613,7 @@ Redis 通过**IO 多路复用程序** 来监听来自客户端的大量连接（
 - 文件事件分派器（将 socket 关联到相应的事件处理器）
 - 事件处理器（连接应答处理器、命令请求处理器、命令回复处理器）
 
-![img](file:///Users/mbpzy/images/redis%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8.png?lastModify=1631508406)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/redis%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8.png)
 
 
 
@@ -627,7 +625,7 @@ Redis 通过**IO 多路复用程序** 来监听来自客户端的大量连接（
 
 虽然说 Redis 是单线程模型，但是，实际上，**Redis 在 4.0 之后的版本中就已经加入了对多线程的支持。**
 
-![redis4.0 more thread](file:///Users/mbpzy/images/redis4.0-more-thread.png?lastModify=1631508406)
+![redis4.0 more thread](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/redis4.0-more-thread.png)
 
 不过，Redis 4.0 增加的多线程主要是针对一些大键值对的删除操作的命令，使用这些命令就会使用主处理之外的其他线程来“异步处理”。
 
@@ -693,7 +691,7 @@ OK
 
 Redis 通过一个叫做过期字典（可以看作是 hash 表）来保存数据过期的时间。过期字典的键指向 Redis 数据库中的某个 key(键)，过期字典的值是一个 long long 类型的整数，这个整数保存了 key 所指向的数据库键的过期时间（毫秒精度的 UNIX 时间戳）。
 
-![redis过期字典](file:///Users/mbpzy/images/redis%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4.png?lastModify=1631508406)
+![redis过期字典](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/redis%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4.png)
 
 过期字典是存储在 redisDb 这个结构里的：
 
@@ -849,7 +847,7 @@ ERR EXEC without MULTI
 
 Redis 官网相关介绍 https://redis.io/topics/transactions 如下：
 
-![redis事务](file:///Users/mbpzy/images/redis%E4%BA%8B%E5%8A%A1.png?lastModify=1631508406)
+![redis事务](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/redis%E4%BA%8B%E5%8A%A1.png)
 
 但是，Redis 的事务和我们平时理解的关系型数据库的事务不同。我们知道事务具有四大特性： **1. 原子性**，**2. 隔离性**，**3. 持久性**，**4. 一致性**。
 
@@ -862,7 +860,7 @@ Redis 官网相关介绍 https://redis.io/topics/transactions 如下：
 
 Redis 官网也解释了自己为啥不支持回滚。简单来说就是 Redis 开发者们觉得没必要支持回滚，这样更简单便捷并且性能更好。Redis 开发者觉得即使命令执行错误也应该在开发过程中就被发现而不是生产过程中。
 
-![redis roll back](file:///Users/mbpzy/images/redis-rollBack.png?lastModify=1631508406)
+![redis roll back](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/redis-rollBack.png)
 
 你可以将 Redis 中的事务就理解为 ：**Redis 事务提供了一种将多个命令请求打包的功能。然后，再按顺序执行打包的所有命令，并且不会被中途打断。**
 
@@ -881,7 +879,7 @@ Redis 官网也解释了自己为啥不支持回滚。简单来说就是 Redis �
 
 如下图所示，用户的请求最终都要跑到数据库中查询一遍。
 
-![缓存穿透情况](file:///Users/mbpzy/images/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E6%83%85%E5%86%B5.png?lastModify=1631508406)
+![缓存穿透情况](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E6%83%85%E5%86%B5.png)
 
 #### 16.3. 有哪些解决办法？
 
@@ -924,7 +922,7 @@ public Object getObjectInclNullById(Integer id) {
 
 加入布隆过滤器之后的缓存处理流程图如下。
 
-![image](file:///Users/mbpzy/images/%E5%8A%A0%E5%85%A5%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%90%8E%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png?lastModify=1631508406)
+![image](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/%E5%8A%A0%E5%85%A5%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E5%90%8E%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
 但是，需要注意的是布隆过滤器可能会存在误判的情况。总结来说就是： **布隆过滤器说某个元素存在，小概率会误判。布隆过滤器说某个元素不在，那么这个元素一定不在。**
 

@@ -109,9 +109,8 @@
      - [关于数据库存储时间的一点思考](/mysql/关于数据库存储时间的一点思考.md)
      - [阿里巴巴开发手册数据库部分的一些最佳实践](/mysql/阿里巴巴开发手册数据库部分的一些最佳实践.md)
   - redis
-      - [redis-基础](/redis/redis-基础.md)
-      - [redis-进阶](/redis/redis-进阶.md)
-      
+     - [redis-基础](/redis/redis-基础.md)
+     - [redis-进阶](/redis/redis-进阶.md)
   - mongodb
   - elasticsearch
       - [51道Elasticsearch面试题](/elasticsearch/51道Elasticsearch面试题.md)
