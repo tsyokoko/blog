@@ -14,23 +14,23 @@
 - 采用了非阻塞 I/O 多路复用机制
 
 ### 什么是I/O多路复用机制？
-打一个比方：小曲在 S 城开了一家快递店，负责同城快送服务。小曲因为资金限制，雇佣了一批快递员，然后小曲发现资金不够了，只够买一辆车送快递。
+打一个比方：小A在 S 城开了一家快递店，负责同城快送服务。小A因为资金限制，雇佣了一批快递员，然后小A发现资金不够了，只够买一辆车送快递。
 
 
  **经营方式一** 
-- 客户每送来一份快递，小曲就让一个快递员盯着，然后快递员开车去送快递。慢慢的小曲就发现了这种经营方式存在下述问题：几十个快递员基本上时间都花在了抢车上了，大部分快递员都处在闲置状态，谁抢到了车，谁就能去送快递。随着快递的增多，快递员也越来越多，小曲发现快递店里越来越挤，没办法雇佣新的快递员了。快递员之间的协调很花时间。
+- 客户每送来一份快递，小A就让一个快递员盯着，然后快递员开车去送快递。慢慢的小A就发现了这种经营方式存在下述问题：几十个快递员基本上时间都花在了抢车上了，大部分快递员都处在闲置状态，谁抢到了车，谁就能去送快递。随着快递的增多，快递员也越来越多，小A发现快递店里越来越挤，没办法雇佣新的快递员了。快递员之间的协调很花时间。
 
-综合上述缺点，小曲痛定思痛，提出了下面的经营方式。
+综合上述缺点，小A痛定思痛，提出了下面的经营方式。
 
  **经营方式二** 
-- 小曲只雇佣一个快递员。然后呢，客户送来的快递，小曲按送达地点标注好，然后依次放在一个地方。最后，那个快递员依次的去取快递，一次拿一个，然后开着车去送快递，送好了就回来拿下一个快递。上述两种经营方式对比，是不是明显觉得第二种，效率更高，更好呢？
+- 小A只雇佣一个快递员。然后呢，客户送来的快递，小A按送达地点标注好，然后依次放在一个地方。快递员依次的一次拿一个去取快递，然后开着车去送快递，送好了就回来拿下一个快递。上述两种经营方式对比，是不是明显觉得第二种，效率更高，更好呢？
 
  **在上述比喻中：** 
 - 每个快递员→每个线程
 - 每个快递→每个 Socket(I/O 流)
 - 快递的送达地点→Socket 的不同状态
 - 客户送快递请求→来自客户端的请求
-- 小曲的经营方式→服务端运行的代码
+- 小A的经营方式→服务端运行的代码
 - 一辆车→CPU 的核数
 
  **于是我们有如下结论：** 
@@ -58,7 +58,7 @@
 
 这也就是传统意义上的，也就是我们在编程中使用最多的阻塞模型：
 
-![img](/Users/mbpzy/images/1-2752455-3999976.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1-2752455-3999976.png)
 
 在这种 IO 模型的场景下，我们是给每一个客户端连接创建一个线程去处理它。不管这个客户端建立了连接有没有在做事（发送读取数据之类），都要去维护这个连接，直到连接断开为止。创建过多的线程就会消耗过高的资源，以 Java BIO 为例
 
@@ -112,7 +112,7 @@ public static void main(String[] args) throws IOException {
 
 #### 非阻塞IO
 
-![img](/Users/mbpzy/images/3-2752454-3999976.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/3-2752454-3999976.png)
 
 可以看到是通过服务端应用程序不断的轮询内核数据是否准备好，如果数据没有准备好的话，内核就返回一个 BWOULDBLOCK 错误，那么应用程序就继续轮询直到数据准备好了为止，在 Java 中的 NIO(非阻塞I/O, New I/O) 底层是通过多路复用 I/O 模型实现的。而现实的场景也是诸如 netty，redis，nginx，nodejs 都是采用的多路复用 I/O 模型，因为在非阻塞 I/O 这种场景下需要我们不断的去轮询，也是会消耗大量的 CPU 资源的，一般很少采用这种方式。我们这里手写一段伪代码来看下
 
@@ -136,7 +136,7 @@ Java 中的 NIO 就是采用的多路复用机制，他在不同的操作系统�
 
 最先出现的是 select 。后由于 select 的一些痛点比如它在 32 位系统下，单进程支持最多打开 1024 个文件描述符（linux 对 IO 等操作都是通过对应的文件描述符实现的 socket 对应的是 socket 文件描述符），poll 对其进行了一些优化，比如突破了 1024 这个限制，他能打开的文件描述符不受限制（但还是要取决于系统资源），而上述 2 中模型都有一个很大的性能问题导致产生出了 epoll。后面会详细分析
 
-![img](/Users/mbpzy/images/2-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/2-2752455-3999977.png)
 
 在 I/O 多路复用模型中，最重要的函数调用就是 `select`，该方法的能够同时监控多个文件描述符的可读可写情况，当其中的某些文件描述符可读或者可写时，`select` 方法就会返回可读以及可写的文件描述符个数。
 
@@ -150,22 +150,22 @@ Redis 服务采用 Reactor 的方式来实现文件事件处理器（每一个�
 
 Redis基于Reactor模式开发了网络事件处理器，这个处理器被称为文件事件处理器。它的组成结构为4部分：多个套接字、IO多路复用程序、文件事件分派器、事件处理器。因为文件事件分派器队列的消费是单线程的，所以Redis才叫单线程模型。
 
-![img](/Users/mbpzy/images/4-2752455-3999976.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/4-2752455-3999976.png)
 
-![img](/Users/mbpzy/images/6-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/6-2752455-3999977.png)
 
-![img](/Users/mbpzy/images/7-2752456-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/7-2752456-3999977.png)
 
-![img](/Users/mbpzy/images/9-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/9-2752455-3999977.png)
 
 #### 消息处理流程
 
-- ==文件事件分派器使用I/O多路复用(multiplexing)程序来同时监听多个套接字，也有叫FD(file Description文件描述符)，(将这些套接字放入同一个队列之中)，并根据套接字目前执行的任务来为套接字关联不同的文件事件处理器。==
-- ==当被监听的套接字准备好执行连接应答(accept)、读取(read)、写入(write)、关闭(close)等操作时，与操作相对应的文件事件就会产生，这时文件事件分派器就会回调套接字之前关联好的事件处理器来处理这些事件。==
+- 文件事件分派器使用I/O多路复用(multiplexing)程序来同时监听多个套接字，也有叫FD(file Description文件描述符)，(将这些套接字放入同一个队列之中)，并根据套接字目前执行的任务来为套接字关联不同的文件事件处理器。
+- 当被监听的套接字准备好执行连接应答(accept)、读取(read)、写入(write)、关闭(close)等操作时，与操作相对应的文件事件就会产生，这时文件事件分派器就会回调套接字之前关联好的事件处理器来处理这些事件。
 
-==**尽管多个文件事件可能会并发地出现，但I/O多路复用程序总是会将所有产生事件的套接字都推到一个队列里面，然后通过这个队列，以有序（sequentially）、同步（synchronously）、每次一个套接字的方式向文件事件分派器传送套接字：当上一个套接字产生的事件被处理完毕之后（该套接字为事件所关联的事件处理器执行完毕）， I/O多路复用程序才会继续向文件事件分派器传送下一个套接字**。==
+**尽管多个文件事件可能会并发地出现，但I/O多路复用程序总是会将所有产生事件的套接字都推到一个队列里面，然后通过这个队列，以有序（sequentially）、同步（synchronously）、每次一个套接字的方式向文件事件分派器传送套接字：当上一个套接字产生的事件被处理完毕之后（该套接字为事件所关联的事件处理器执行完毕）， I/O多路复用程序才会继续向文件事件分派器传送下一个套接字**。
 
-==虽然**整个文件事件处理器是在单线程上运行的**，但是通过 I/O 多路复用模块的引入，实现了同时对多个 FD(文件描述符) 读写的监控，提高了网络通信模型的性能，同时也可以保证整个 Redis 服务实现的简单==
+虽然**整个文件事件处理器是在单线程上运行的**，但是通过 I/O 多路复用模块的引入，实现了同时对多个 FD(文件描述符) 读写的监控，提高了网络通信模型的性能，同时也可以保证整个 Redis 服务实现的简单
 
 #### 文件事件处理器
 
@@ -211,7 +211,7 @@ IO 多路复用程序可以同时监听 AE_REABLE 和 AE_WRITABLE 两种事件�
 
 I/O 多路复用模块封装了底层的 `select`、`epoll`、`avport` 以及 `kqueue` 这些 I/O 多路复用函数，为上层提供了相同的接口。
 
-![img](/Users/mbpzy/images/5-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/5-2752455-3999977.png)
 
 整个 I/O 多路复用模块抹平了不同平台上 I/O 多路复用函数的差异性，提供了相同的接口
 
@@ -219,13 +219,24 @@ I/O 多路复用模块封装了底层的 `select`、`epoll`、`avport` 以及 `k
 
 因为 Redis 需要在多个平台上运行，同时为了最大化执行的效率与性能，所以会根据编译平台的不同选择不同的 I/O 多路复用函数作为子模块，提供给上层统一的接口；在 Redis 中，我们通过宏定义的使用，合理的选择不同的子模块：
 
-```
-ifdef HAVE_EVPORTinclude "ae_evport.c"else    ifdef HAVE_EPOLL    include "ae_epoll.c"    else        ifdef HAVE_KQUEUE        include "ae_kqueue.c"        elsec        include "ae_select.c"        endif    endif
+```java
+#ifdef HAVE_EVPORT
+#include "ae_evport.c"
+#else
+    #ifdef HAVE_EPOLL
+    #include "ae_epoll.c"
+    #else
+        #ifdef HAVE_KQUEUE
+        #include "ae_kqueue.c"
+        #else
+        #include "ae_select.c"
+        #endif
+    #endif
 ```
 
 因为 `select` 函数是作为 POSIX 标准中的系统调用，在不同版本的操作系统上都会实现，所以将其作为保底方案：
 
-![img](/Users/mbpzy/images/8-2752456-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/8-2752456-3999977.png)
 
 Redis 会优先选择时间复杂度为 $O(1)$ 的 I/O 多路复用函数作为底层实现，包括 Solaries 10 中的 `evport`、Linux 中的 `epoll` 和 macOS/FreeBSD 中的 `kqueue`，上述的这些函数都使用了内核内部的结构，并且能够服务几十万的文件描述符。
 
@@ -235,23 +246,23 @@ Redis 会优先选择时间复杂度为 $O(1)$ 的 I/O 多路复用函数作为�
 
 通常的一次的请求结果如下图所示：
 
-![img](/Users/mbpzy/images/10-3999977.gif)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/10-3999977.gif)
 
 但是，服务器往往不会只处理一次请求，往往是多个请求，这一个请求，这时候每来一个请求，就会生成一个进程或线程。
 
-![img](/Users/mbpzy/images/11-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/11-2752455-3999977.png)
 
 在这些请求线程或者进程中，大部分都处于等待阶段，只有少部分是接收数据。这样一来，非常耗费资源，而且这些线程或者进程的管理，也是个事儿。
 
-![img](/Users/mbpzy/images/12-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/12-2752455-3999977.png)
 
 于是，有人想到一个办法：我们只用一个线程或者进程来和系统内核打交道，并想办法把每个应用的I/O流状态记录下来，一有响应变及时返回给相应的应用。
 
-![img](/Users/mbpzy/images/13-2752455-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/13-2752455-3999977.png)
 
 或者下图：
 
-![img](/Users/mbpzy/images/14-2752456-3999977.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/14-2752456-3999977.png)
 
 #### select、poll、epoll
 
@@ -267,11 +278,11 @@ epoll和 select/poll 有着很大的不同：
 
 例如：select/poll的处理流程如下：
 
-![img](/Users/mbpzy/images/15-3999977.gif)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/15-3999977.gif)
 
 而epoll的处理流程如下：
 
-![img](/Users/mbpzy/images/16-3999977.gif)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/16-3999977.gif)
 
 这样，就无需遍历成千上万个消息列表了，直接可以定位哪个socket有数据。
 
@@ -279,7 +290,7 @@ epoll和 select/poll 有着很大的不同：
 
 早期的时候 epoll的实现是一个哈希表，但是后来由于占用空间比较大，改为了红黑树和链表
 
-![img](/Users/mbpzy/images/17-3999977.jpg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/17-3999977.jpg)
 
 其中链表中全部为活跃的链接，红黑树中放的是所有事件。两部分各司其职。 这样一来，当收到内核的数据时，只需遍历链表中的数据就行了，而注册read事件或者write事件的时候，向红黑树中记录。
 
@@ -511,7 +522,7 @@ Cache Aside Pattern 中服务端需要同时维系 DB 和 cache，并且是以 D
 
 简单画了一张图帮助大家理解写的步骤。
 
-![](/Users/mbpzy/images/5687fe759a1dac9ed9554d27e3a23b6d-4001117.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/5687fe759a1dac9ed9554d27e3a23b6d-4001117.png)
 
 **读** :
 
@@ -521,7 +532,7 @@ Cache Aside Pattern 中服务端需要同时维系 DB 和 cache，并且是以 D
 
 简单画了一张图帮助大家理解读的步骤。
 
-![](/Users/mbpzy/images/a8c18b5f5b1aed03234bcbbd8c173a87-4001117.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/a8c18b5f5b1aed03234bcbbd8c173a87-4001117.png)
 
 
 你仅仅了解了上面这些内容的话是远远不够的，我们还要搞懂其中的原理。
@@ -566,7 +577,7 @@ Read/Write Through Pattern 中服务端把 cache 视为主要数据存储，从�
 
 简单画了一张图帮助大家理解写的步骤。
 
-![](/Users/mbpzy/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-4001117.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-4001117.png)
 
 **读(Read Through)：** 
 
@@ -575,7 +586,7 @@ Read/Write Through Pattern 中服务端把 cache 视为主要数据存储，从�
 
 简单画了一张图帮助大家理解读的步骤。
 
-![](/Users/mbpzy/images/9ada757c78614934aca11306f334638d-4001117.png)
+![](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/9ada757c78614934aca11306f334638d-4001117.png)
 
 Read-Through Pattern 实际只是在 Cache-Aside Pattern 之上进行了封装。在 Cache-Aside Pattern 下，发生读请求的时候，如果 cache 中不存在对应的数据，是由客户端自己负责把数据写入 cache，而 Read Through Pattern 则是 cache 服务自己来写入缓存的，这对客户端是透明的。
 
@@ -633,9 +644,9 @@ Write Behind Pattern 下 DB 的写性能非常高，非常适合一些数据经�
 
 **主从链(拓扑结构)**
 
-![主从](/Users/mbpzy/images/format,png-20211012084213604-20211012085550655.png)
+![主从](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012084213604-20211012085550655.png)
 
-![主从](/Users/mbpzy/images/format,png-20211012085550666.png)
+![主从](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012085550666.png)
 
 **复制模式**
 
@@ -660,7 +671,7 @@ Write Behind Pattern 下 DB 的写性能非常高，非常适合一些数据经�
 
 ### 哨兵机制
 
-![image](/Users/mbpzy/images/format,png-20211012084213782-20211012085550680.png)
+![image](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012084213782-20211012085550680.png)
 
 **节点下线**
 
@@ -711,7 +722,7 @@ Redis集群模式有redis-proxy、master、replica、HA等几个角色。在读�
 Redis是单进程单线程模型，主从之间的数据复制也在主线程中处理，read-only replica数量越多，数据同步对master的CPU消耗就越严重，集群的写入性能会随着read-only replica的增加而降低。此外，星型架构会让master的出口带宽随着read-only replica的增加而成倍增长。Master上较高的CPU和网络负载会抵消掉星型复制延迟较低的优势，因此，星型复制架构会带来比较严重的扩展问题，整个集群的性能会受限于master。
 
 
-![img](/Users/mbpzy/images/p3189.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/p3189.png)
 
 - 链式复制
 
@@ -722,7 +733,7 @@ Redis是单进程单线程模型，主从之间的数据复制也在主线程中
 链式复制的架构下，复制链越长，复制链末端的read-only replica和master之间的同步延迟就越大，考虑到读写分离主要使用在对一致性要求不高的场景下，这个缺点一般可以接受。但是如果复制链中的某个节点异常，会导致下游的所有节点数据都会大幅滞后。更加严重的是这可能带来全量同步，并且全量同步将一直传递到复制链的末端，这会对服务带来一定的影响。为了解决这个问题，读写分离的Redis都使用阿里云优化后的binlog复制版本，最大程度的降低全量同步的概率。
 
 
-![img](/Users/mbpzy/images/p3191.png)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/p3191.png)
 
 结合上述的讨论和比较，Redis读写分离选择链式复制的架构。
 
@@ -771,7 +782,7 @@ Redis主从异步复制，从read-only replica中可能读到旧的数据，使�
 
 **拓扑图**
 
-![image](/Users/mbpzy/images/format,png-20211012084213765-20211012085550683.png)
+![image](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012084213765-20211012085550683.png)
 
 **通讯**
 
@@ -789,7 +800,7 @@ Redis主从异步复制，从read-only replica中可能读到旧的数据，使�
 
 - Gossip
 
-![image](/Users/mbpzy/images/format,png-20211012084213703-20211012085550716.png)
+![image](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012084213703-20211012085550716.png)
 
 **寻址分片**
 
@@ -807,11 +818,11 @@ Redis主从异步复制，从read-only replica中可能读到旧的数据，使�
   - 一致性哈希算法在节点太少时，容易因为节点分布不均匀而造成缓存热点的问题。
   - 解决方案：可以通过引入虚拟节点机制解决：即对每一个节点计算多个 hash，每个计算结果位置都放置一个虚拟节点。这样就实现了数据的均匀分布，负载均衡。
 
-![image](/Users/mbpzy/images/format,png-20211012084213827-20211012085550690.png)
+![image](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012084213827-20211012085550690.png)
 
 - ##### hash槽 ：CRC16(key)%16384
 
-- ![image](/Users/mbpzy/images/format,png-20211012084213869-20211012085550671.png)
+- ![image](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/format,png-20211012084213869-20211012085550671.png)
 
 **使用场景**
 
@@ -949,7 +960,7 @@ Redisson提供了使用Redis的最简单和最便捷的方法。Redisson的宗�
 
 **二、Redisson原理分析**
 
-![preview](/Users/mbpzy/images/view.jpeg)
+![preview](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/view.jpeg)
 
 ### 1.加锁机制
 
@@ -997,13 +1008,13 @@ Redisson可以实现可重入加锁机制的原因，我觉得跟两点有关：
 ```
 
 下面是redis存储的数据
-![img](/Users/mbpzy/images/1460000022355786.jpeg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1460000022355786.jpeg)
 
 这里表面数据类型是Hash类型,Hash类型相当于我们java的 `<key,<key1,value>> `类型,这里key是指 'redisson'，它的有效期还有9秒，我们再来看里们的key1值为 `078e44a3-5f95-4e24-b6aa-80684655a15a:45 `它的组成是guid + 当前线程的ID。后面的value是就和可重入加锁有关。
 
 **举图说明**
 
-![img](/Users/mbpzy/images/1460000022355787.jpeg)
+![img](https://tsyokoko-typora-images.oss-cn-shanghai.aliyuncs.com/img/1460000022355787.jpeg)
 
 上面这图的意思就是可重入锁的机制，它最大的优点就是相同线程不需要在等待锁，而是可以直接进行相应操作。
 
