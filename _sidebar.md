@@ -11,7 +11,6 @@
      - [ArrayList源码+扩容机制分析](/java/ArrayList源码+扩容机制分析.md)
      - [IO模型](/java/IO模型.md)
      - [BIO,NIO,AIO总结](/java/BIO,NIO,AIO总结.md)
-     - [Java 基础](/java/Java%20基础.md)
      - [Java8新特性总结](/java/Java8新特性总结.md)
      - [2020最新Java并发基础常见面试题总结-1](/java/2020最新Java并发基础常见面试题总结-1.md)
      - [2020最新Java并发进阶常见面试题总结-2](/java/2020最新Java并发进阶常见面试题总结-2.md)
